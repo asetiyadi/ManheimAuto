@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ManheimAuto">
+        <wb-resource deploy-path="/" source-path="/apps/AutoInspection/common"/>
+        <wb-resource deploy-path="/" source-path="/apps/AutoInspection/ipad"/>
+        <property name="context-root" value="ManheimAuto"/>
+    </wb-module>
+</project-modules>

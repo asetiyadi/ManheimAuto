@@ -1,0 +1,116 @@
+{
+    "frontInterior": [
+        {
+            "id": 1,
+            "desc": "Front Interior: All 3 keys",
+            "name": "frontInterior_Inspection1",
+            "infoDesc":"Front Interior: All 3 keys test info"
+        },
+        {
+            "id": 2,
+            "desc": "Front Interior: Warning lights & messages",
+            "name": "frontInterior_Inspection2",
+            "infoDesc":"Front Interior: Warning lights & messages test info"
+        },
+        {
+            "id": 3,
+            "desc": "Front Interior: Onboard computer",
+            "name": "frontInterior_Inspection3",
+            "infoDesc":"Front Interior: Onboard computer test info"
+        },
+        {
+            "id": 4,
+            "desc": "Front Interior: Hazard lights switch",
+            "name": "frontInterior_Inspection4",
+            "infoDesc":"Front Interior: Hazard lights switch test info"
+        },
+        {
+            "id": 5,
+            "desc": "Front Interior: Dash/console switches",
+            "name": "frontInterior_Inspection5",
+            "infoDesc":"Front Interior: Dash/console switches test info"
+        },
+        {
+            "id": 6,
+            "desc": "Front Interior: Driver's side airbags",
+            "name": "frontInterior_Inspection6",
+            "infoDesc":"Front Interior: Driver's side airbags test info"
+        }
+    ],
+    "leftFrontInterior": [
+        {
+            "id": 1,
+            "desc": "Left Front Interior: All 3 keys",
+            "name": "leftFrontInterior_Inspection1",
+            "infoDesc":"Left Front Interior: All 3 keys test info"
+        },
+        {
+            "id": 2,
+            "desc": "Left Front Interior: Warning lights & messages",
+            "name": "leftFrontInterior_Inspection2",
+            "infoDesc":"Left Front Interior: Warning lights & messages test info"
+        },
+        {
+            "id": 3,
+            "desc": "Left Front Interior: Onboard computer",
+            "name": "leftFrontInterior_Inspection3",
+            "infoDesc":"Left Front Interior: Onboard computer test info"
+        },
+        {
+            "id": 4,
+            "desc": "Left Front Interior: Hazard lights switch",
+            "name": "leftFrontInterior_Inspection4",
+            "infoDesc":"Left Front Interior: Hazard lights switch test info"
+        },
+        {
+            "id": 5,
+            "desc": "Left Front Interior: Dash/console switches",
+            "name": "leftFrontInterior_Inspection5",
+            "infoDesc":"Left Front Interior: Dash/console switches test info"
+        },
+        {
+            "id": 6,
+            "desc": "Left Front Interior: Driver's side airbags",
+            "name": "leftFrontInterior_Inspection6",
+            "infoDesc":"Left Front Interior: Driver's side airbags test info"
+        }
+    ],
+    "leftRearInterior": [
+        {
+            "id": 1,
+            "desc": "Left Rear Interior: All 3 keys",
+            "name": "leftRearInterior_Inspection1",
+            "infoDesc":"Left Rear Interior: All 3 keys test info"
+        },
+        {
+            "id": 2,
+            "desc": "Left Rear Interior: Warning lights & messages",
+            "name": "leftRearInterior_Inspection2",
+            "infoDesc":"Left Rear Interior: Warning lights & messages test info"
+        },
+        {
+            "id": 3,
+            "desc": "Left Rear Interior: Onboard computer",
+            "name": "leftRearInterior_Inspection3",
+            "infoDesc":"Left Rear Interior: Onboard computer test info"
+        },
+        {
+            "id": 4,
+            "desc": "Left Rear Interior: Hazard lights switch",
+            "name": "leftRearInterior_Inspection4",
+            "infoDesc":"Left Rear Interior: Hazard lights switch test info"
+        },
+        {
+            "id": 5,
+            "desc": "Left Rear Interior: Dash/console switches",
+            "name": "leftRearInterior_Inspection5",
+            "infoDesc":"Left Rear Interior: Dash/console switches test info"
+        },
+        {
+            "id": 6,
+            "desc": "Left Rear Interior: Driver's side airbags",
+            "name": "leftRearInterior_Inspection6",
+            "infoDesc":"Left Rear Interior: Driver's side airbags test info"
+        }
+    ]
+}

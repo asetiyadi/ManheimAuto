@@ -1,0 +1,83 @@
+<div class="contentWrapper">
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleInterior.frontInterior')">Front Interior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleInterior.leftFrontInterior')">Left Front Interior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleInterior.leftRearInterior')">Left Rear Interior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleInterior.rightRearInterior')">Right Rear Interior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleInterior.rightFrontInterior')">Right Front Interior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleExterior.frontExterior')">Front Exterior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleExterior.leftFrontExterior')">Left Front Exterior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleExterior.leftRearExterior')">Left Rear Exterior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleExterior.rightRearExterior')">Right Rear Exterior</h3>
+	<h3 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleExterior.rightFrontExterior')">Right Front Exterior</h3>
+	<h3 class="headerName" data-ng-show="$state.is('inspection.report.vehicleEngine')">Engine Compartment</h3>
+	<h3 class="headerName" data-ng-show="$state.is('inspection.report.roadTest')">Road Test</h3>
+	<h3 class="headerName" data-ng-show="$state.is('inspection.report.underVehicle')">Under the Vehicle</h3>
+	<h3 class="headerName" data-ng-show="$state.is('inspection.report.summary')">Inspection Summary</h3>
+	<div class="report-header">
+		<div class="report-notice">
+			<p>Inspect and check that the operation and/or condition of the following items meet requirements</p>
+		</div>
+	</div>
+	<div class="mainContentArea">
+		<ul id="heading">
+			<li class="col-1">&nbsp;</li>
+			<li class="col-2">Yes</li>
+			<li class="col-3">No</li>
+			<li class="col-4">Repair</li>
+			<li class="col-5">Attach</li>
+			<li class="col-6">Info</li>
+		</ul>
+		<ul>
+			<li data-ng-repeat="content in dataForm track by $index">
+				<div class="desc col-1">{{content.desc}}</div>
+				<div class="yesOpt col-2">
+					<label data-ng-class="{checked: formData[content.name] === 'yes',unchecked: formData[content.name] != 'yes'}">
+						<input type="radio" name="{{content.name}}" value="yes" data-ng-model="formData[content.name]" data-ng-click="numItems()" />
+						<div class="iconWrapper">
+							<span class="yes-photo"></span>
+						</div>
+					</label>
+				</div>
+
+				<div class="noOpt col-2">
+					<label data-ng-class="{checked: formData[content.name] === 'no',unchecked: formData[content.name] != 'no'}">
+						<input type="radio" name="{{content.name}}" value="no" data-ng-model="formData[content.name]" data-ng-click="numItems()" />
+						<div class="iconWrapper">
+							<span class="no-photo"></span>
+						</div>
+					</label>
+				</div>
+
+				<div class="repairOpt col-2">
+					<label data-ng-class="{checked: formData[content.name] === 'repair',unchecked: formData[content.name] != 'repair'}">
+						<input type="radio" name="{{content.name}}" value="repair" data-ng-model="formData[content.name]" data-ng-click="numItems()" />
+						<div class="iconWrapper">
+							<span class="repair-photo"></span>
+						</div>
+					</label>
+				</div>
+
+				<div class="col-2">
+					<div class="attachImg"></div>
+				</div>
+				<div class="col-2">
+					<div class="infoImg" data-ng-click="toggleModal(content.infoDesc)"></div>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!--
+	button not in use; this is how overlay modal template is triggered 
+	<input type="button" data-ng-click="toggleModal(text)" class="redBtn" style="width:50%;margin:0 auto;" value="Sample Overlay">
+	-->
+	<div id="swipeWrapper">
+		<span>&#60;&#60; Swipe to Navigate &#62;&#62;</span>
+	</div>
+	<div id="reportFooter">
+		Vehicle <span class="dot">&#46;</span> {{model}} &#124;
+		Year <span class="dot">&#46;</span> <span data-ng-repeat="years in vehicleData.years">{{years.year}}</span> &#124;
+		Color <span class="dot">&#46;</span> Gold &#124; <!-- {{colors.color || 'N/A'}} -->
+		Tech <span class="dot">&#46;</span> John Smith &#124;
+		Inspection Started <span class="dot">&#46;</span> {{date | date:'MM/dd/yy'}}
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<div class="progressWrapper">
+	<div class="row">
+		<!-- static value for now; TODO dynamic variable to update progress bar -->
+	  	<div class="col-progress">
+			<progressbar class="progress-striped active" animate="true" max="100" value="progressValue" type="success">
+				<i><span count-to="{{countTo}}" duration="1" count-from="{{countFrom}}"></span>{{countTo}} / 100</i>
+			</progressbar>
+	  		<div class="progress-left">
+				<span class="strong">Overall Progress</span>
+	  		</div>
+	  		<div class="progress-right">
+	  			{{countTo}}%<br>
+	  			total: {{formData.length}}
+	  		</div>
+	  	</div>
+	</div>
+</div>

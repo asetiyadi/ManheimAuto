@@ -1,0 +1,123 @@
+{
+    "nav": [
+        {
+            "id": 1,
+            "linkID": "dealerVehicleInfo",
+            "linkClass": "{active:dealerActive,act:preCheckActive,complete:dealerSectionComplete}",
+            "linkURL": "inspection.report.dealerVehicleInfo",
+            "linkTitle": "Dealer and Vehicle Info",
+            "subLinks": null
+        },
+        {
+            "id": 2,
+            "linkID": "vehicleInterior",
+            "linkClass": "{active:interiorActive,complete:interiorSectionComplete}",
+            "linkURL": "inspection.report.vehicleInterior.frontInterior",
+            "linkTitle": "Interior of Vehicle",
+            "subLinks": [
+                {
+                    "id": 1,
+                    "linkClass": null,
+                    "linkURL": "inspection.report.vehicleInterior.frontInterior",
+                    "linkTitle": "2.1 Front Interior"
+                },
+                {
+                    "id": 2,
+                    "linkClass": "{active:interiorActive}",
+                    "linkURL": "inspection.report.vehicleInterior.leftFrontInterior",
+                    "linkTitle": "2.2 Left Front Interior"
+                },
+                {
+                    "id": 3,
+                    "linkClass": "{active:interiorActive}",
+                    "linkURL": "inspection.report.vehicleInterior.leftRearInterior",
+                    "linkTitle": "2.3 Left Rear Interior"
+                },
+                {
+                    "id": 4,
+                    "linkClass": "{active:interiorActive}",
+                    "linkURL": "inspection.report.vehicleInterior.rightRearInterior",
+                    "linkTitle": "2.4 Right Rear Interior"
+                },
+                {
+                    "id": 5,
+                    "linkClass": "{active:interiorActive}",
+                    "linkURL": "inspection.report.vehicleInterior.rightFrontInterior",
+                    "linkTitle": "2.5 Right Front Interior"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "linkID": "vehicleExterior",
+            "linkClass": "{active:exteriorActive,complete:exteriorSectionComplete}",
+            "linkURL": "inspection.report.vehicleExterior.frontExterior",
+            "linkTitle": "Exterior of Vehicle",
+            "subLinks": [
+                {
+                    "id": 1,
+                    "linkClass": null,
+                    "linkURL": "inspection.report.vehicleExterior.frontExterior",
+                    "linkTitle": "3.1 Front Exterior"
+                },
+                {
+                    "id": 2,
+                    "linkClass": "{active:exteriorActive}",
+                    "linkURL": "inspection.report.vehicleExterior.leftFrontExterior",
+                    "linkTitle": "3.2 Left Front Exterior"
+                },
+                {
+                    "id": 3,
+                    "linkClass": "{active:exteriorActive}",
+                    "linkURL": "inspection.report.vehicleExterior.leftRearExterior",
+                    "linkTitle": "3.3 Left Rear Exterior"
+                },
+                {
+                    "id": 4,
+                    "linkClass": "{active:exteriorActive}",
+                    "linkURL": "inspection.report.vehicleExterior.rightRearExterior",
+                    "linkTitle": "3.4 Right Rear Exterior"
+                },
+                {
+                    "id": 5,
+                    "linkClass": "{active:exteriorActive}",
+                    "linkURL": "inspection.report.vehicleExterior.rightFrontExterior",
+                    "linkTitle": "3.5 Right Front Exterior"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "linkID": "engineCompartment",
+            "linkClass": "{active:engineActive,complete:engineComplete}",
+            "linkURL": "inspection.report.vehicleEngine",
+            "linkTitle": "Engine Compartment",
+            "subLinks": null
+        },
+        {
+            "id": 5,
+            "linkID": "roadTest",
+            "linkClass": "{active:roadActive,complete:roadTestComplete}",
+            "linkURL": "inspection.report.roadTest",
+            "linkTitle": "Road Test",
+            "subLinks": null
+        },
+        {
+            "id": 6,
+            "linkID": "underVehicle",
+            "linkClass": "{active:underVehicleActive,complete:underVehicleComplete}",
+            "linkURL": "inspection.report.underTheVehicle",
+            "linkTitle": "Under the Vehicle",
+            "subLinks": null
+        },
+        {
+            "id": 7,
+            "linkID": "inspectionSummary",
+            "linkClass": "{active:summaryActive,complete:inspectionComplete}",
+            "linkURL": "inspection.report.summary",
+            "linkTitle": "Inspection Summary",
+            "subLinks": null
+        }
+
+    ]
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html><!-- manifest="/cache.manifest" -->
+	<head>
+		<title update-title></title>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+		<link rel="icon" type="image/png" href="images/favicon.png">
+		<!-- === -->
+		<!-- CSS -->
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/views.css">
+		<link rel="stylesheet" href="css/animate.css">
+		<link rel="stylesheet" href="css/bootstrap.3.3.2.min.css">
+		<link rel="stylesheet" href="css/bootstrap-theme.3.3.2.min.css">
+		<link rel="stylesheet" href="css/jquery-ui.min.css">
+		<!-- Note: MUST BE PLACED BEFORE angular.js-->
+		<script type="text/javascript" src="js/lib/angular-file-upload-shim.min.js"></script> 
+	</head>
+	<body data-ng-controller="mainCtrl" data-ng-cloak device-detector>
+
+		<!-- ======= -->
+		<!-- CONTENT -->
+		<div id="Content" class="container slide-view">
+			<div data-ui-view="content" role="main" id="mainView"></div>
+		</div>
+		<!-- ======= -->
+		<!-- SCRIPTS -->
+		<script type="text/javascript" src="js/lib/jquery.1.11.2.min.js"></script>
+	  	<script type="text/javascript" src="js/lib/require.js" data-main="js/main.js"></script>
+	    <script type="text/javascript" src="js/lib/html5-qr-code-scanner.js"></script>
+	    <!-- ============================== -->
+	    <!-- HTML5 QR CODE REQUIRED SCRIPTS -->
+	    <script type="text/javascript" src="js/lib/qr-code/grid.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/version.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/detector.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/formatinf.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/errorlevel.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/bitmat.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/datablock.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/bmparser.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/datamask.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/rsdecoder.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/gf256poly.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/gf256.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/decoder.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/qrcode.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/findpat.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/alignpat.js"></script>
+	    <script type="text/javascript" src="js/lib/qr-code/databr.js"></script>
+	    
+	    <script src="js/initOptions.js"></script>
+   		<script src="js/main.js"></script>
+   		<script src="js/messages.js"></script>
+	</body>
+</html>

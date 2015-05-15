@@ -1,0 +1,116 @@
+{
+    "frontExterior": [
+        {
+            "id": 1,
+            "desc": "Front Exterior: No evidence of flood damage",
+            "name": "frontExterior_Inspection1",
+            "infoDesc":"Front Exterior: No evidence of flood damage test info"
+        },
+        {
+            "id": 2,
+            "desc": "Front Exterior: No evidence of fire damage",
+            "name": "frontExterior_Inspection2",
+            "infoDesc":"Front Exterior: No evidence of fire damage test info"
+        },
+        {
+            "id": 3,
+            "desc": "Front Exterior: No evidence of major damage",
+            "name": "frontExterior_Inspection3",
+            "infoDesc":"Front Exterior: No evidence of major damage test info"
+        },
+        {
+            "id": 4,
+            "desc": "Front Exterior: No evidence of hail damage",
+            "name": "frontExterior_Inspection4",
+            "infoDesc":"Front Exterior: No evidence of hail damage test info"
+        },
+        {
+            "id": 5,
+            "desc": "Front Exterior: Body Panel Inspection",
+            "name": "frontExterior_Inspection5",
+            "infoDesc":"Front Exterior: Body Panel Inspection test info"
+        },
+        {
+            "id": 6,
+            "desc": "Front Exterior: Bumper/Fascia Inspection",
+            "name": "frontExterior_Inspection6",
+            "infoDesc":"Front Exterior: Bumper/Fascia Inspection test info"
+        }
+    ],
+    "leftFrontExterior": [
+        {
+            "id": 1,
+            "desc": "Left Front Exterior: No evidence of flood damage",
+            "name": "leftFrontExterior_Inspection1",
+            "infoDesc":"Left Front Exterior: No evidence of flood damage test info"
+        },
+        {
+            "id": 2,
+            "desc": "Left Front Exterior: No evidence of fire damage",
+            "name": "leftFrontExterior_Inspection2",
+            "infoDesc":"Left Front Exterior: No evidence of fire damage test info"
+        },
+        {
+            "id": 3,
+            "desc": "Left Front Exterior: No evidence of major damage",
+            "name": "leftFrontExterior_Inspection3",
+            "infoDesc":"Left Front Exterior: No evidence of major damage test info"
+        },
+        {
+            "id": 4,
+            "desc": "Left Front Exterior: No evidence of hail damage",
+            "name": "leftFrontExterior_Inspection4",
+            "infoDesc":"Left Front Exterior: No evidence of hail damage test info"
+        },
+        {
+            "id": 5,
+            "desc": "Left Front Exterior: Body Panel Inspection",
+            "name": "leftFrontExterior_Inspection5",
+            "infoDesc":"Left Front Exterior: Body Panel Inspection test info"
+        },
+        {
+            "id": 6,
+            "desc": "Left Front Exterior: Bumper/Fascia Inspection",
+            "name": "leftFrontExterior_Inspection6",
+            "infoDesc":"Left Front Exterior: Bumper/Fascia Inspection test info"
+        }
+    ],
+    "leftRearExterior": [
+        {
+            "id": 1,
+            "desc": "Left Rear Exterior: No evidence of flood damage",
+            "name": "leftRearExterior_Inspection1",
+            "infoDesc":"Left Rear Exterior: No evidence of flood damage test info"
+        },
+        {
+            "id": 2,
+            "desc": "Left Rear Exterior: No evidence of fire damage",
+            "name": "leftRearExterior_Inspection2",
+            "infoDesc":"Left Rear Exterior: No evidence of fire damage test info"
+        },
+        {
+            "id": 3,
+            "desc": "Left Rear Exterior: No evidence of major damage",
+            "name": "leftRearExterior_Inspection3",
+            "infoDesc":"Left Rear Exterior: No evidence of major damage test info"
+        },
+        {
+            "id": 4,
+            "desc": "Left Rear Exterior: No evidence of hail damage",
+            "name": "leftRearExterior_Inspection4",
+            "infoDesc":"Left Rear Exterior: No evidence of hail damage test info"
+        },
+        {
+            "id": 5,
+            "desc": "Left Rear Exterior: Body Panel Inspection",
+            "name": "leftRearExterior_Inspection5",
+            "infoDesc":"Left Rear Exterior: Body Panel Inspection test info"
+        },
+        {
+            "id": 6,
+            "desc": "Left Rear Exterior: Bumper/Fascia Inspection",
+            "name": "leftRearExterior_Inspection6",
+            "infoDesc":"Left Rear Exterior: Bumper/Fascia Inspection test info"
+        }
+    ]
+}

@@ -1,0 +1,1611 @@
+/****************************************************************************************
+*
+*  @version (.1)
+*  @date (2015)
+*
+*  1.) LOGIN/REGISTER TEMPLATE ______________ @loginRegisterTmpl
+*  2.) HEADER TEMPLATE  _____________________ @headerTmpl
+*  3.) NAVIGATION TEMPLATE __________________ @navigationTmpl
+*  4.) DASHBOARD TEMPLATE ___________________ @dashboardTmpl
+*  5.) REPORT TEMPLATE ______________________ @reportTempl
+*  6.) VIN SCANNER TEMPLATE _________________ @vinScannerTmpl
+*  7.) VEHICLE PROGRESS TEMPLATE ____________ @progressTmpl
+*  8.) VEHICLE REVIEW TEMPLATE ______________ @reviewTmpl
+*  9.) DEALER/VEHICLE TEMPLATE ______________ @dealerVehicleTmpl
+* 10.) INTERIOR TEMPLATE ____________________ @interiorTmpl
+* 11.) EXTERIOR TEMPLATE ____________________ @exteriorTmpl
+* 12.) ENGINE TEMPLATE ______________________ @engineTmpl
+* 13.) ROAD TEST TEMPLATE ___________________ @roadTestTmpl
+* 14.) UNDER VEHICLE TEMPLATE _______________ @underVehicleTmpl
+* 15.) SUMMARY TEMPLATE _____________________ @summaryTmpl
+* 16.) REPORT _______________________________ @report
+* 17.) MEDIA QUERIES ________________________ @mediaQueries
+*
+*****************************************************************************************/
+.vehicleImg img {
+	width: 23em;
+	height: auto;
+}
+.manheimLogoSprite {
+	background: url('../images/manheim-logo-sprite.png') no-repeat bottom -7px center;
+	height: 100px;
+	width: 170px;
+	padding: 0;
+	margin: 2em auto 1em;
+}
+.contentWrapper {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+.contentWrapper h2 {
+	padding: 1em 0 1em 0;
+	margin: 0;
+	color: #545450;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+.contentWrapper h3 {
+	padding: 0.75em;
+	margin: 0;
+	background-color: #FBFBFA;
+	color: #545450;
+	font-weight: bold;
+	font-size: 1em;
+}
+.progress-left {
+	float: left;
+	padding-left: 1em;
+	font-size: 0.85em;
+}
+.progress-right {
+	float: right;
+	padding-right: 1em;
+	font-size: 0.85em;
+}
+.col-progress {
+	width: 85%;
+	margin: 0.5em auto;
+}
+.report-notice {
+	width: 65%;
+	margin: 5em auto 0;
+}
+.report-notice p {
+	font-size: 0.9em;
+	font-weight: normal !important;
+	font-style: italic;
+	margin: 1em auto;
+}
+.report-header {
+	border-bottom: 2px solid #CCC7C7;
+}
+/* progress - bootstrap ui override */
+#reportProgress {
+	position: absolute;
+	top: 17%;
+	right: 0;
+	width: 70%;
+	height: auto;
+}
+.progress {
+	height: 18px !important;
+	padding: 0 !important;
+	margin: 0 !important;
+  	height: 3em;
+  	i { line-height: 3.5em; }
+}
+.progress-bar {
+	background-color: #fe851f !important;
+	transition: width 1s ease-in-out;
+}
+#mainView {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+}
+#authenticateWrapper {
+	background: url('../images/login-background.jpg') no-repeat center center;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#vinLoading {
+	margin: 1em auto;
+}
+#loadingForm {
+	background: url('../images/transparent-background.png') repeat center center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	z-index: 1;
+}
+#loadingForm .loading-modal {
+	width: 60%;
+	margin: 5em auto;
+	padding: 4em;
+	background-color: #FFF;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+#loadingForm .loading-modal p {
+	margin: 1em auto;
+	font-size: 1.1em;
+}
+/*********************************************
+*  LOGIN/REGISTER TEMPLATE  @loginRegisterTmpl
+**********************************************/
+#loginWrapper {
+	width: 90%;
+	max-width: 40em;
+	margin: 2em auto 0;
+	background-color: rgba(255,255,255,0.8);
+	padding: 0.5em 3em 3em 3em;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+#registerWrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background: url('../images/login-background.jpg') no-repeat center center;
+	background-size: cover;
+}
+#registrationFormWrapper {
+	width: 90%;
+	max-width: 40em;
+	margin: 2em auto 0;
+	background-color: rgba(255,255,255,0.8);
+	padding: 0.25em;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+}
+#registrationFormWrapper h1 {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+#registrationFormWrapper form {
+	padding: 0.25em 1em 1em 1em;
+}
+#registrationFormWrapper .form-group {
+	height: auto;
+	width: 100%;
+	margin: 0.75em auto;
+}
+#registrationFormWrapper .form-group label {
+	height: 100%;
+	display: block;
+	font-size: 1.25em;
+	text-align: left;
+}
+#registrationFormWrapper .registerBtnWrapper {
+	width: 100%;
+}
+#registrationFormWrapper .registerBtnWrapper a {
+	width: 100%;
+	display: inline-block;
+	margin: 0.5em 0;
+	font-size: 1em;
+	padding: 0;
+	line-height: 3em;
+}
+/*********************************************
+*  HEADER TEMPLATE                 @headerTmpl
+**********************************************/
+#headerContainer {
+	height: 10%;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	color: #FFF;
+	background-color: #00305e;
+}
+#headerWrapper {
+	position: absolute;
+	bottom: 0.5em;
+	left: 0;
+	width: 100%;
+}
+#headerContainer .headerName {
+	font-weight: bold;
+	margin: 4% auto 1%;
+	width: 100%;
+	text-transform: capitalize;
+	font-size: 1em;
+	position: absolute;
+	bottom: 0;
+}
+.logoutWrapper {
+	position: absolute;
+	z-index: 1;
+	bottom: 0.2em;
+	right: 1em;
+}
+.logoutWrapper a,
+.cancelWrapper a {
+	color: #FFF;
+	font-size: 1.2em;
+	padding: 0.75em;
+}
+.logoutWrapper a:hover,
+.logoutWrapper a:focus,
+.logoutWrapper a:active,
+.cancelWrapper a:hover,
+.cancelWrapper a:focus,
+.cancelWrapper a:active {
+	color: #FFF;
+	text-decoration: none;
+}
+.cancelWrapper {
+	position: absolute;
+	bottom: 0.2em;
+	left: 1em;
+}
+/*********************************************
+*  NAVIGATION TEMPLATE         @navigationTmpl
+**********************************************/
+#navigationWrapper {
+	height: 90%;
+	min-width: 175px;
+	width: 30%;
+	position: absolute;
+	z-index: -1; /* for swiping anywhere on page */
+	top: 10%;
+	left: 0;
+	padding: 0;
+	margin: 0;
+	background-color: #EDECEA;
+}
+#navigationWrapper ul {
+	list-style-type: none;
+	border-bottom: 1px solid #ccc7c7;
+	padding: 0;
+}
+#navigationWrapper ul li {
+	height: auto;
+	min-height: 3em;
+	width: 100%;
+	position: relative;
+	font-size: 0.85em;
+}
+#navigationWrapper ul li a,
+#navigationWrapper ul li a:hover,
+#navigationWrapper ul li a:active,
+#navigationWrapper ul li a:focus,
+#navigationWrapper ul li a:visited {
+	text-decoration: none;
+}
+#navigationWrapper ul li a.mainLink {
+	display: block;
+	width: 75%;
+	height: 100%;
+	color: #000;
+	border-bottom: 1px solid #ccc7c7;
+	text-align: left;
+	line-height: 3.1em;
+	margin-left: 3.35em;
+	text-transform: capitalize;
+}
+#navigationWrapper ul li.active a.mainLink,
+#navigationWrapper ul li.act a.mainLink  {
+	font-weight: bold;
+	color: #00305E;
+}
+#navigationWrapper ul li.complete a.mainLink:after {
+	content: '\f00c';
+	font-family: FontAwesome;
+	font-weight: normal;
+	height: 100%;
+	width: 1.5em;
+	float: right;
+	color: #00c52f;
+}
+#navigationWrapper ul li:last-child a {
+	border-bottom: none;
+}
+#navigationWrapper ul li ol {
+	list-style-type: none;
+	background-color: #fbfbfa;
+	padding: 0;
+}
+#navigationWrapper ul li ol li {
+	margin-left: 0.75em;
+	width: 94.5%;
+	font-size: 1em;
+	background-color: transparent;
+}
+#navigationWrapper ul li ol li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: #000;
+	border-bottom: 1px solid #ccc7c7;
+	text-align: left;
+	line-height: 3.1em;
+	padding-left: 1.5em;
+}
+#navigationWrapper ul li ol li.active a {
+	font-weight: bold;
+	color: #545450;
+}
+#navigationWrapper ul li ol li.act a {
+	font-weight: bold;
+	color: #F90000;
+}
+#dealerVehicleInfo:before,
+#vehicleType:before,
+#vehicleInterior:before,
+#vehicleExterior:before,
+#engineCompartment:before,
+#roadTest:before,
+#underVehicle:before,
+#inspectionSummary:before {
+	content: '';
+  	height: 3em;
+  	width: 2.9em;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+#dealerVehicleInfo:before {
+	background: url('../images/menu-icons/dealer-vehicle-info.png') no-repeat center center;
+	background-size: 90%;
+}
+#dealerVehicleInfo.active:before {
+	background: url('../images/menu-icons/active-dealer-vehicle-info.png') no-repeat center center;
+	background-size: 90%;
+}
+#dealerVehicleInfo.act:before {
+	background: url('../images/menu-icons/active-dealer-vehicle-info.png') no-repeat center center;
+	background-size: 90%;
+}
+#vehicleInterior:before {
+	background: url('../images/menu-icons/vehicle-interior.png') no-repeat center center;
+	background-size: 90%;
+}
+#vehicleInterior.active:before {
+	background: url('../images/menu-icons/active-vehicle-interior.png') no-repeat center center;
+	background-size: 90%;
+}
+#vehicleExterior:before {
+	background: url('../images/menu-icons/vehicle-exterior.png') no-repeat center center;
+	background-size: 90%;
+}
+#vehicleExterior.active:before {
+	background: url('../images/menu-icons/active-vehicle-exterior.png') no-repeat center center;
+	background-size: 90%;
+}
+#engineCompartment:before {
+	background: url('../images/menu-icons/engine-compartment.png') no-repeat center center;
+	background-size: 90%;
+}
+#engineCompartment.active:before {
+	background: url('../images/menu-icons/active-engine-compartment.png') no-repeat center center;
+	background-size: 90%;
+}
+#roadTest:before {
+	background: url('../images/menu-icons/road-test.png') no-repeat center center;
+	background-size: 90%;
+}
+#roadTest.active:before {
+	background: url('../images/menu-icons/active-road-test.png') no-repeat center center;
+	background-size: 90%;
+}
+#underVehicle:before {
+	background: url('../images/menu-icons/under-vehicle.png') no-repeat center center;
+	background-size: 90%;
+}
+#underVehicle.active:before {
+	background: url('../images/menu-icons/active-under-vehicle.png') no-repeat center center;
+	background-size: 90%;
+}
+#inspectionSummary:before {
+	background: url('../images/menu-icons/inspection-summary.png') no-repeat center center;
+	background-size: 90%;
+}
+#inspectionSummary.active:before {
+	background: url('../images/menu-icons/active-inspection-summary.png') no-repeat center center;
+	background-size: 90%;
+}
+/*********************************************
+*  DASHBOARD TEMPLATE           @dashboardTmpl
+**********************************************/
+#dashboardWrapper {
+	background: url('../images/seamless-grid.jpg') repeat center center;
+	position: absolute;
+	top: 10%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+	height: 90%;
+}
+#dashboardWrapper .contentWrapper {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+#dashboardWrapper .contentWrapper figure.logo {
+	position: absolute;
+	top: 5%;
+	left: 0;
+	right: 0;
+}
+#dashboardWrapper .contentWrapper figure.logo img {
+	height: auto;
+	width: 80%;
+	max-width: 16em;
+}
+#dashboardWrapper .contentWrapper figure.car img {
+	height: auto;
+	width: 80%;
+	max-width: 23em;
+}
+#dashboardBtnWrapper {
+	position: absolute;
+	bottom: 30%;
+	left: 0;
+	right: 0;
+}
+#dealerBtnWrapper {
+	position: absolute;
+	bottom: 3%;
+	left: 0;
+	right: 0;
+}
+#dashboardBtnWrapper a,
+#dealerBtnWrapper a {
+	width: 10em;
+	margin: 0 auto;
+}
+#dashboardBtnWrapper a:hover,
+#dealerBtnWrapper a:hover,
+#dashboardBtnWrapper a:focus,
+#dealerBtnWrapper a:focus {
+	color: #FFF !important;
+}
+#swipeWrapper {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 2em;
+}
+#swipeWrapper span {
+	font-weight: normal;
+	font-size: 1.5em;
+}
+#reportFooter {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0.25em;
+	font-size: 0.8em;
+	color: #000;
+	font-weight: bold;
+	width: 100%;
+}
+.dot {
+	vertical-align: text-bottom;
+}
+#topWrapper {
+	display: table;
+	width: 100%;
+	border-bottom: 1px solid #eee;
+}
+#topWrapper .leftContainer figure img {
+	width: 2em;
+	height: auto;
+}
+#topWrapper .leftContainer {
+	border-right: 1px solid #eee;
+}
+#topWrapper .leftContainer,
+#topWrapper .rightContainer {
+	width: 50%;
+	display: table-cell;
+	height: 10em;
+	vertical-align: middle;
+	font-size: 0.8em;
+}
+#topWrapper .rightContainer p {
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	font-size: 1.25em;
+}
+#precheckMileage {
+	width: 10.5em;
+	margin: 0 auto;
+}
+.textWrap {
+	font-weight: bold;
+	font-size: 1.25em;
+	width: 9em;
+	display: inline-block;
+	vertical-align: middle;
+	float: left;
+	margin-left: 2em;
+	margin-top: 0.5em;
+}
+.imgWrap {
+	font-weight: bold;
+	font-size: 1.25em;
+	display: inline-block;
+	float: right;
+	margin-top: 0.1em;
+	margin-right: 2em;
+}
+/*********************************************
+*  REPORT TEMPLATE                 @reportTmpl
+**********************************************/
+.disableBtn {
+	background-color: #E2E2E2;
+	color: #c0c0c0;
+	border: 3px solid #c0c0c0;
+	font-size: 1.5em;
+	font-weight: bold;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	display: block;
+	width: 80%;
+	outline: none;
+	margin: 0.5em auto 1em;
+	padding: 1em 0;
+	line-height: 0.1em;
+}
+.enableBtn {
+	background-color: #00305e;
+	color: #FFF;
+	border: 3px solid transparent;
+}
+#inspectionPathWrapper ul {
+	display: block;
+	list-style-type: none;
+	width: 100%;
+	margin: 0 auto;
+	padding: 0;
+}
+#inspectionPathWrapper ul li {
+	display: block;
+	width: 80%;
+	margin: 0.5em auto;
+}
+#inspectionWrapper p {
+	text-transform: capitalize;
+	font-weight: bold;
+	text-align: center;
+}
+#inspectionPathWrapper .bronzeBtn,
+#inspectionPathWrapper .silverBtn,
+#inspectionPathWrapper .goldBtn {
+	color: #000;
+	font-size: 1.3em;
+	font-weight: bold;
+	border: none;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	display: block;
+	width: 100%;
+	height: 15em;
+	padding: 1.75em 0;
+	line-height: 0;
+	position: relative;
+}
+#inspectionPathWrapper label {
+	display: block;
+	height: 8em;
+	width: 100%;
+	margin: 0 auto;
+	cursor: pointer;
+}
+#inspectionPathWrapper .iconWrapper {
+	height: 100%;
+	width: 100%;
+	margin: 0 auto;
+	position: relative;
+}
+#inspectionPathWrapper label > input:checked + .iconWrapper > p {
+	color: #000;
+}
+#inspectionPathWrapper .bronzeBtn {
+	background: url('../images/inspection-type/bronze-inspection.png') no-repeat center center;
+	background-size: contain;
+}
+#inspectionPathWrapper .silverBtn {
+	background: url('../images/inspection-type/silver-inspection.png') no-repeat center center;
+	background-size: contain;
+}
+#inspectionPathWrapper .goldBtn {
+	background: url('../images/inspection-type/gold-inspection.png') no-repeat center center;
+	background-size: contain;
+}
+#inspectionPathWrapper label > input[type=radio] { 
+  	visibility: hidden; 
+	position: absolute; 
+}
+#inspectionPathWrapper label > input + .iconWrapper span { 
+  	height: 100%;
+	width: 100%;
+	display: block;
+}
+/*********************************************
+*  VIN SCANNER TEMPLATE        @vinScannerTmpl
+**********************************************/
+canvas,
+video {
+	vertical-align: top !important;
+}
+video {
+	position: fixed; 
+	right: 0; 
+	bottom: 0;
+	min-width: 100%; 
+	min-height: 100%;
+	width: auto; 
+	height: auto; 
+	z-index: -100
+}
+#vinWrapper {
+	height: 90%;
+	width: 100%;
+	position: absolute;
+	top: 10%;
+	left: 0;
+	overflow: auto;
+	background: url('../images/vin-placeholder-background.png') no-repeat bottom center;
+	background-size: 100% 71%;
+}
+#vinBtnWrapper {
+	height: 3.2em;
+	width: 19.25em;
+	margin: 1.5em auto 0;
+	text-align: center;
+}
+#videoFeed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+#vinBtnWrapper a {
+	display: inline-block;
+}
+#vinBtnWrapper a:hover {
+	color: #FFF;
+	text-decoration: none;
+}
+#skipVin {
+	width: 5em;
+	margin: 0 auto;
+	padding: 1.75em 0;
+	line-height: 0.1em;
+	margin-right: 5%;
+}
+#enterVin {
+	width: 13em;
+	margin: 0 auto;
+	padding: 1.75em 0;
+	line-height: 0.1em;
+}
+#qrInstructions {
+	margin-top: 1em;
+}
+#qrInstructions p {
+	color: #FFF;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.25em;
+	font-weight: normal;
+	padding: 0.25em;
+}
+#vinAlignmentBar {
+	background: url('../images/qr-scanner.png') no-repeat center center;
+	background-size: contain;
+	margin: 6em auto 0;
+	width: 90%;
+	height: 30%;
+}
+.manual-vin-modal > .modal-dialog {
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding: 0.5em; 
+	height: auto;
+	width: 48.1em !important;
+	width: 90% !important; /* bootstrap override */
+	background-color: #e1e0de !important; /* bootstrap override */
+	margin: 11em auto 0;
+}
+.manual-vin-modal > .modal-dialog > .modal-content {
+	background-color: transparent;
+	box-shadow: none !important;
+	border: none;
+	min-height: 8em;
+}
+#manualVIN {
+	width: 100%;
+	height: 15em;
+	background-color: #E8E8E8;
+}
+#manualVIN h4 {
+	width: 100%;
+	height: 3em;
+	text-align: center;
+	margin: 0 auto;
+	line-height: 3.1em;
+	font-size: 1.5em;
+	color: #545450;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#manualVIN .inputWrapper {
+	height: auto;
+	margin: 0 auto;
+	text-align: left;
+	padding: 0.75em;
+}
+#manualVIN input[type=text] {
+	width: 13em;
+	height: 44px;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	text-align: left;
+	font-weight: bold;
+	margin: 0 auto;
+	font-size: 1.5em;
+}
+/*********************************************
+*  VEHICLE PROGRESS TEMPLATE     @progressTmpl
+**********************************************/
+#progressWrapper h4 {
+	background-color: #D7D7D7;
+	font-size: 0.9em;
+	font-weight: bold;
+	padding: 1em 0;
+	margin: 0;
+}
+#progressWrapper ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid #dbd7d6;
+}
+#progressWrapper ul li {
+	width: 100%;
+	height: auto;
+	font-size: 0.85em;
+}
+#progressWrapper ul li:last-child {
+	border-bottom: none;
+}
+#progressWrapper ul li a {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+#progressWrapper ul li a:hover,
+#progressWrapper ul li a:active,
+#progressWrapper ul li a:focus,
+#progressWrapper ul li a:visited {
+	text-decoration: none;
+}
+#progressWrapper ul li figure {
+	width: 100%;
+	height: auto;
+	display: block;
+	padding: 0;
+	margin: 0 auto;
+}
+#progressWrapper ul li figure img {
+	margin-top: 0.25em;
+	height: auto;
+	width: 30%;
+}
+#progressWrapper ul li div {
+	color: #343535;
+	width: 100%;
+	height: auto;
+	display: block;
+	font-size: 0.85em;
+	text-align: center;
+	border-bottom: 1px solid #dbd7d6;
+}
+#progressWrapper ul li:last-child div {
+	border-bottom: none;
+}
+/*********************************************
+*  VEHICLE REVIEW TEMPLATE         @reviewTmpl
+**********************************************/
+#reviewWrapper h4 {
+	color: #FFF;
+	background-color: #63615E;
+	font-size: 0.9em;
+	font-weight: bold;
+	padding: 1em 0;
+	margin: 0;
+}
+#reviewWrapper ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	border-bottom: 1px solid #b0aaa8;
+}
+#reviewWrapper ul li {
+	width: 100%;
+	height: auto;
+	font-size: 0.85em;
+}
+#reviewWrapper ul li a {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+#reviewWrapper ul li a:hover,
+#reviewWrapper ul li a:active,
+#reviewWrapper ul li a:focus,
+#reviewWrapper ul li a:visited {
+	text-decoration: none;
+}
+#reviewWrapper ul li figure {
+	width: 100%;
+	height: auto;
+	display: block;
+	padding: 0;
+	margin: 0 auto;
+}
+#reviewWrapper ul li figure img {
+	margin-top: 0.25em;
+	height: auto;
+	width: 30%;
+}
+#reviewWrapper ul li div {
+	color: #FFF;
+	width: 100%;
+	height: auto;
+	display: block;
+	font-size: 0.85em;
+	text-align: center;
+	border-bottom: 1px solid #b0aaa8;
+}
+#reviewWrapper ul li:last-child div {
+	border-bottom: none;
+}
+/*********************************************
+*  DEALER/VEHICLE TEMPLATE  @dealerVehicleTmpl
+**********************************************/
+#dealerVehicleWrapper {
+	height: 90%;
+	width: 70%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	overflow: hidden;
+}
+#file-name span {
+	width: 100% !important;
+	height: 100% !important;
+}
+#results-body {
+	text-align: left;
+	padding: 2em 0 0 0;
+	text-transform: uppercase;
+	width: 75%;
+}
+#results-body p {
+	display: inline-block;
+	font-family: 'Helvetica Neue Light', sans-serif;
+	font-weight: bold;
+	font-size: 1em;
+	color: #545450;
+	padding: 0;
+	text-transform: uppercase;
+}
+#results-body span {
+	font-family: 'Helvetica Neue Light', sans-serif;
+	font-weight: normal;
+	font-size: 1em;
+	color: #959391;
+	padding: 0;
+}
+#results-body div.group {
+	width: 75%;
+	margin: 0 auto;
+	height: 1.75em;
+}
+#results-body div.group input { 
+	width: 70%;
+	height: 1.5em;
+	margin: 0 auto;
+	padding-left: 0.25em;
+	text-transform: uppercase;
+	float: right;
+	font-family: 'Helvetica Neue Light', sans-serif;
+	font-weight: normal;
+	font-size: 1em;
+	color: #959391;
+}
+#results-body hr {
+	width: 90%;
+	margin: 1em auto;
+}
+#top-container {
+	width: 100%;
+	display: block;
+	height: 2.4em;
+}
+#pre-heading {
+	width: 20%;
+	float: right;
+	margin-right: 1em;
+}
+#pre-heading li {
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+	margin: 0;
+	padding: 0.75em;
+	border-bottom: none;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+#heading {
+	padding: 0;
+}
+#heading li {
+	border-bottom: none;
+	display: inline-block;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	padding: 0;
+}
+#heading li.col-1 {
+	width: 50%;
+}
+#heading li.col-2 {
+	width: 9%;
+}
+#heading li.col-3 {
+	width: 6%;
+}
+#heading li.col-4 {
+	width: 10%;
+}
+#heading li.col-5 {
+	width: 10%;
+}
+#heading li.col-6 {
+	width: 6%;
+}
+#precheckList li {
+	border-top: 1px solid #8A8A8A;
+	border-bottom: none;
+	padding: 0.5em;
+	margin-bottom: 1em;
+}
+#precheckList li div.col-1 {
+	width: 80%;
+}
+#precheckList li div.col-2 {
+	width: 10%;
+}
+.mainContentArea {
+	height: 71%;
+}
+.mainContentArea ul {
+	list-style-type: none;
+	padding: 0 0 0 0.5em;
+	margin: 0;
+}
+.mainContentArea ul li {
+	text-align: left;
+	display: table;
+	font-size: 0.85em;
+	width: 100%;
+	margin: 0.75em auto;
+	border-bottom: 1px solid #EDECEA;
+}
+.mainContentArea ul li div {
+	display: table-cell;
+	vertical-align: middle;
+}
+.mainContentArea ul li div.col-1 {
+	width: 30%;
+}
+.mainContentArea ul li div.col-2 {
+	width: 5%;
+	text-align: center;
+	padding-bottom: 0.5em;
+}
+.attachImg {
+	background: url('../images/attach-btn.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	height: 30px;
+	width: 30px;
+}
+.infoImg {
+	background: url('../images/info-btn.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+	height: 30px;
+	width: 30px;
+}
+.mainContentArea ul li div.col-2 label {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+.mainContentArea ul li div.col-2 .iconWrapper {
+	display: table;
+}
+.mainContentArea ul li div.col-2 label > input[type=radio] { 
+  	visibility: hidden; 
+	position: absolute; 
+}
+.mainContentArea ul li div.col-2 label > input + .iconWrapper span { 
+	cursor: pointer;
+	height: 29px;
+	width: 28px;
+	display: table-cell;
+	vertical-align: middle;
+}
+.mainContentArea label > input + .iconWrapper > span {
+	background: url('../images/unchecked-btn.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+.mainContentArea label > input:checked + .iconWrapper > span.yes-photo {
+	background: url('../images/yes-btn.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+.mainContentArea label > input:checked + .iconWrapper > span.no-photo {
+	background: url('../images/no-btn.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+.mainContentArea label > input:checked + .iconWrapper > span.repair-photo {
+	background: url('../images/repair-btn.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+#addPhotoWrapper {
+	margin: 1em 0 0 5em;
+}
+#addPhotoWrapper label {
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0;
+	margin: 0;
+}
+#addPhotoWrapper .iconWrapper {
+	display: table;
+}
+#addPhotoWrapper .iconWrapper p {
+	font-family: 'Helvetica Neue Light', sans-serif;
+	font-weight: normal;
+	font-size: 1em;
+	color: #959391;
+	padding-left: 0.5em;
+	display: table-cell;
+	vertical-align: middle;
+}
+#photo {
+	background: url('../images/add-photo-button.jpg') center center no-repeat;
+	background-size: 75% auto;
+}
+#addPhotoWrapper label > input[type=file] { 
+  	visibility: hidden; 
+	position: absolute; 
+}
+#addPhotoWrapper label > input + .iconWrapper span { 
+	cursor: pointer;
+	height: 29px;
+	width: 28px;
+	display: table-cell;
+	vertical-align: middle;
+}
+#formWrapper {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+/*********************************************
+*  INTERIOR TEMPLATE             @interiorTmpl
+**********************************************/
+#vehicleInteriorWrapper,
+#preCheckWrapper,
+#frontInteriorWrapper,
+#leftFrontInteriorWrapper,
+#leftRearInteriorWrapper,
+#rightFrontInteriorWrapper,
+#rightRearInteriorWrapper {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+#preCheckLink {
+	color: #FFF;
+	position: absolute;
+	left: 30%;
+	bottom: 0;
+	z-index: 1;
+	height: 44px;
+	padding-top: 1.2em;
+}
+#preCheckWrapper,
+#vehicleInteriorWrapper {
+	height: 90%;
+	width: 70%;
+}
+#frontInteriorWrapper,
+#leftFrontInteriorWrapper,
+#leftRearInteriorWrapper,
+#rightFrontInteriorWrapper,
+#rightRearInteriorWrapper {
+	height: 100%;
+	width: 100%;
+}
+/*********************************************
+*  EXTERIOR TEMPLATE             @exteriorTmpl
+**********************************************/
+#vehicleInterior ol,
+#vehicleExterior ol {
+	display: none;
+}
+#vehicleInterior.active ol,
+#vehicleExterior.active ol {
+	display: block;
+}
+#vehicleExteriorWrapper,
+#frontExteriorWrapper,
+#leftFrontExteriorWrapper,
+#leftRearExteriorWrapper,
+#rightFrontExteriorWrapper,
+#rightRearExteriorWrapper {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+#vehicleExteriorWrapper {
+	height: 90%;
+	width: 70%;
+}
+#frontExteriorWrapper,
+#leftFrontExteriorWrapper,
+#leftRearExteriorWrapper,
+#rightFrontExteriorWrapper,
+#rightRearExteriorWrapper {
+	height: 100%;
+	width: 100%;
+}
+/*********************************************
+*  ENGINE TEMPLATE                 @engineTmpl
+**********************************************/
+#engineWrapper {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 90%;
+	width: 70%;
+}
+.mainWrapper {
+	height: 100%;
+	width: 100%;
+}
+/*********************************************
+*  ROAD TEST TEMPLATE            @roadTestTmpl
+**********************************************/
+#roadTestWrapper {
+	height: 90%;
+	width: 70%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+/*********************************************
+*  UNDER VEHICLE TEMPLATE    @underVehicleTmpl
+**********************************************/
+#underVehicleWrapper {
+	height: 90%;
+	width: 70%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+/*********************************************
+*  SUMMARY TEMPLATE               @summaryTmpl
+**********************************************/
+.seventyFive {
+	width: 75%;
+}
+.twentyFive {
+	width: 25%;
+}
+.red {
+	color: #eb0000 !important;
+}
+.green {
+	color: #008757 !important;
+}
+p.suggested {
+	text-align: center !important;
+	color: #515759;
+	font-weight: bold !important;
+	font-size: 0.85em !important;
+	padding: 0;
+	margin: 1em auto 0;
+}
+#summaryWrapper {
+	height: 90%;
+	width: 70%;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+}
+#summaryWrapper p {
+	text-transform: none;
+	font-weight: normal;
+	text-align: left;
+	font-size: 0.9em;
+}
+#summaryWrapper h3 {
+	padding: 0.75em;
+	margin: 0;
+	background-color: transparent;
+	color: #00305E;
+	font-weight: bold;
+	font-size: 1.1em;
+}
+#summaryWrapper .summaryTbl {
+	width: 100%;
+	display: table;
+	table-layout: fixed;
+}
+#rating {
+	width: 35%;
+	height: 14em;
+	display: table-cell;
+	vertical-align: middle;
+	border-right: 6px solid #EDECEA;
+	border-bottom: 6px solid #EDECEA;
+}
+#points {
+	width: 65%;
+	height: 14em;
+	display: table-cell;
+	vertical-align: middle;
+	border-bottom: 6px solid #EDECEA;
+}
+#rating small {
+	display: block;
+	text-align: center;
+	color: #666;
+	width: 80%;
+	margin: 0.5em auto;
+}
+#rating img {
+	width: 70%;
+	max-width: 10em;
+	height: auto;
+}
+#points img {
+	width: 90%;
+	max-width: 24em;
+	height: auto;
+}
+#repair img {
+	width: 80%;
+	max-width: 20em;
+	height: auto;
+	margin: 1.5em auto;
+}
+#pricing img {
+	width: 10em;
+	height: auto;
+}
+#repair,
+#pricing {
+	width: 100%;
+	display: block;
+}
+#repairGraph {
+	background: url('../images/summary/projected-repair.png') no-repeat top center;
+	background-size: contain;
+}
+#repair div.left,
+#repair div.right {
+	width: 50%;
+	height: 14em;
+	border-bottom: 6px solid #EDECEA;
+}
+#repair ul,
+#pricing ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 auto;
+	width: 90%;
+	height: 100%;
+}
+#repair ul li.tblHeader {
+	background-color: #EDECEA;
+	color: #818181;
+	width: 100%;
+	height: 3em;
+	border-bottom: 1px solid #BEBEBE;
+}
+#repair ul li {
+	width: 100%;
+	height: 3em;
+}
+#repair ul li.left,
+#repair ul li.right {
+	height: 14em;
+	display: inline-block;
+	width: 50%;
+	padding: 0;
+	margin: 0;
+	border-bottom: 6px solid #EDECEA;
+}
+#repair ul li p {
+	display: inline-block;
+	margin: 0;
+	padding: 0.5em;
+	height: 100%;
+	line-height: 2.6em;
+}
+#pricing div.left,
+#pricing div.right {
+	width: 50%;
+	height: 14em;
+}
+#pricing div.right ul {
+	margin: 0;
+}
+#pricing div.right h4,
+#pricing div.right ul li p {
+	text-align: left;
+	font-weight: bold;
+}
+#pricing h2 {
+	padding: 0;
+	margin: 0;
+}
+#summaryBtn {
+	width: 25%;
+	margin: 0 auto;
+	position: absolute;
+	bottom: 4%;
+	left: 0;
+	right: 0;
+}
+#pricing 
+#reviewContainer,
+#progressContainer {
+	display: none;
+} 
+/*********************************************
+*  MEDIA QUERIES                 @mediaQueries
+**********************************************/
+/* 500px */
+@media all and (min-width: 31.250em) {
+	.contentWrapper h2 {
+		font-size: 1.15em;
+	}
+	#dashboardWrapper {
+		width: 40%;
+	}
+	#progressContainer,
+	#reviewContainer {
+		height: 90%;
+		width: 30%;
+		padding: 0;
+		margin: 0;
+		overflow-y: auto;
+		display: block;
+	}
+	#progressContainer {
+		background-color: #E8E8E8;
+		position: absolute;
+		top: 10%;
+		left: 0;
+	}
+	#reviewContainer {
+		background-color: #807D78;
+		position: absolute;
+		top: 10%;
+		right: 0;
+	}
+    /******************************
+    * LOGIN/REGISTER TEMPLATE
+    *******************************/
+    #registerWrapper .registerBtnWrapper a {
+		font-size: 1.25em;
+		line-height: 2.5em;
+    }
+
+}
+/* 625px */
+@media all and (min-width: 39.063em) {
+	.contentWrapper h2 {
+		font-size: 1.5em;
+	}
+    /******************************
+    * LOGIN/REGISTER TEMPLATE
+    *******************************/
+    #registrationFormWrapper .form-group {
+    	display: table;
+    }
+	#registerWrapper .form-group label {
+		width: 25%;
+		display: table-cell;
+		vertical-align: middle;
+		text-align: right;
+		padding-right: 0.75em;
+	}
+	#registerWrapper input.form-control {
+		display: table-cell;
+		float: right;
+		width: 100%;
+	}
+	#registerWrapper .registerBtnWrapper {
+		width: 75%;
+		height: 4.5em;
+		text-align: center;
+		float: right;
+	}
+	#registerWrapper .registerBtnWrapper a {
+		width: 45%;
+	}
+	#registrationFormWrapper form {
+		padding: 0.25em 3.5em 5em 3em;
+	}
+	#registerWrapper .registerBtnWrapper .return {
+		float: left;
+	}
+	#registerWrapper .registerBtnWrapper .register {
+		float: right;
+	}
+	#registrationFormWrapper h1 {
+		font-size: 2em;
+	}
+}
+/* 768px */
+@media all and (min-width: 48em) {
+	.disableBtn {
+		max-width: 15em;
+	}
+	#inspectionPathWrapper ul {
+		max-width: 65em;
+	}
+	#inspectionPathWrapper ul li {
+		margin: 0 auto;
+		display: inline-block;
+		width: 31.5%;
+	}
+	#inspectionPathWrapper ul li.topLI {
+		width: 100%;
+		display: block;
+		margin: 1em auto;
+	}
+	#inspectionPathWrapper label {
+		height: 9em;
+	}
+	#qrInstructions p { 
+		font-size: 1.5em;
+	}
+    /******************************
+    * LOGIN TEMPLATE
+    *******************************/
+    .manheimLogoSprite {
+		background: url('../images/manheim-logo-sprite.png') no-repeat top -6px center;
+		height: 140px;
+		width: 242px;
+	}
+	#navigationWrapper ul li a.mainLink {
+		width: 80%;
+	}
+	#navigationWrapper ul li {
+		font-size: 1em;
+	}
+	#reviewWrapper ul li,
+	#progressWrapper ul li {
+		height: 6em;
+		font-size: 1em;
+	}
+	#reviewWrapper h4,
+	#progressWrapper h4 {
+		font-size: 1em;
+	}
+	#reviewWrapper ul li figure,
+	#progressWrapper ul li figure {
+		width: 25%;
+		height: 100%;
+		display: table-cell;
+		vertical-align: middle;
+	}
+	#reviewWrapper ul li figure img,
+	#progressWrapper ul li figure img {
+		margin: 0;
+		width: 80%;
+		max-width: 6em;
+	}
+	#reviewWrapper ul li div,
+	#progressWrapper ul li div {
+		width: 70%;
+		height: 100%;
+		display: table-cell;
+		vertical-align: middle;
+		text-align: left;
+		padding-left: 1em;
+	}
+	#manualVIN .inputWrapper {
+		text-align: center;
+	}
+	#dashboardWrapper .contentWrapper figure.car {
+		position: absolute;
+		top: 25%;
+		left: 0;
+		right: 0;
+	}
+	#inspectionPathWrapper {
+		position: absolute;
+		bottom: 10%;
+		left: 0;
+		right: 0;
+		margin: 0 auto;
+		width: 100%;
+	}
+}
+ /* 1024px */
+@media all and (min-width: 64em) {
+	#loginWrapper {
+		width: 40%;
+	}
+	/******************************
+    * VEHICLE PROGRESS TEMPLATE
+    *******************************/
+	#progressContainer {
+		width: 25%;
+	}
+
+	/******************************
+    * VEHICLE REVIEW TEMPLATE
+    *******************************/
+	#reviewContainer {
+		width: 25%;
+	}
+
+	/******************************
+    * DASHBOARD TEMPLATE
+    *******************************/
+	#dashboardWrapper {
+		width: 50%;
+	}
+}

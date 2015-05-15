@@ -1,0 +1,39 @@
+<div class="viewWrapper" id="registerWrapper">
+	<!-- ================= -->
+	<!-- REGISTRATION FORM -->
+	<div id="registrationFormWrapper">
+		<div class="registrationHeader">
+			<h1>Create a New Account</h1>
+		</div>
+		<form role="form">
+			<div class="form-group">
+				<label for="username">Username</label>
+				<input type="text" id="username" name="username" class="form-control" data-ng-model="userInfo.username">
+			</div>
+			<div class="form-group">
+				<label for="password">Password</label>
+				<input type="password" id="password" name="password" class="form-control" data-ng-model="userInfo.password">
+			</div>
+			<div class="form-group">
+				<label for="firstname">First Name</label>
+				<input type="text" id="firstname" name="firstname" class="form-control" data-ng-model="userInfo.firstname">
+			</div>
+			<div class="form-group">
+				<label for="lastname">Last Name</label>
+				<input type="text" id="lastname" name="lastname" class="form-control" data-ng-model="userInfo.lastname">
+			</div>
+			<div class="form-group">
+				<label for="email">Email</label>
+				<input type="email" id="email" name="email" class="form-control" data-ng-model="userInfo.email">
+			</div>
+			<div class="form-group">
+				<label for="techId">Tech ID</label>
+				<input type="text" id="techId" name="techId" class="form-control" data-ng-model="userInfo.techId">
+			</div>
+			<div class="registerBtnWrapper">
+				<a href ui-sref="login" class="primaryBtn button return">Return to Main</a>
+				<a href data-ng-click="registerUser()" class="primaryBtn button register">Register User</a>
+			</div>
+		</form>
+	</div>
+</div>

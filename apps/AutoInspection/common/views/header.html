@@ -1,0 +1,18 @@
+<div class="viewWrapper" id="headerWrapper">
+	<h4 class="headerName" data-ng-show="$state.is('dashboard.content')">Welcome, John</h4><!-- TODO: dynamic name -->
+	<h4 class="headerName" data-ng-show="$state.is('inspection.vehiclePath')">Choose your inspection path</h4>
+	<h4 class="headerName" data-ng-show="$state.is('inspection.vinScanner')">VIN Scanner</h4>
+	<h4 class="headerName" data-ng-show="$state.is('inspection.report.dealerVehicleInfo')">Dealer and Vehicle Info</h4>
+	<h4 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleInterior')">Interior of Vehicle</h4>
+	<h4 class="headerName" data-ng-show="$state.includes('inspection.report.vehicleExterior')">Exterior of Vehicle</h4>
+	<h4 class="headerName" data-ng-show="$state.is('inspection.report.vehicleEngine')">Engine Compartment</h4>
+	<h4 class="headerName" data-ng-show="$state.is('inspection.report.roadTest')">Road Test</h4>
+	<h4 class="headerName" data-ng-show="$state.is('inspection.report.underTheVehicle')">Under the Vehicle</h4>
+	<h4 class="headerName" data-ng-show="$state.is('inspection.report.summary')">Inspection Summary</h4>
+	<div class="cancelWrapper" data-ng-show="$state.is('inspection.vehiclePath')"><a href ui-sref="dashboard.content">Cancel</a></div>
+	<div class="cancelWrapper" data-ng-show="$state.is('inspection.vinScanner')"><a href ui-sref="dashboard.content">Cancel</a></div>
+	<div class="logoutWrapper" data-ng-show="$state.is('dashboard.content')"><a href ui-sref="login">Logout</a></div>
+	<div class="logoutWrapper" data-ng-show="$state.includes('inspection.report')"><a href ui-sref="login">Save &amp; Quit</a></div>
+
+	<a href ui-sref="inspection.report.dealerVehicleInfo" id="preCheckLink" data-ng-show="$state.includes('inspection.report.preCheck')">&#60; Dealer &amp; Vehicle Info</a>
+</div>

@@ -1,0 +1,7 @@
+apps/*/android/native/assets/www
+apps/*/blackberry*/native*/www
+apps/*/i*/native/CordovaLib
+apps/*/i*/native/WorklightSDK
+apps/*/i*/native/www
+apps/*/windowsPhone*/native/www
+bin

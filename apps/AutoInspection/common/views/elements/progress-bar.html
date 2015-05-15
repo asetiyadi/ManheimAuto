@@ -1,0 +1,16 @@
+<div class="progressWrapper"><!-- data-ng-controller="progressBarCtrl" -->
+	<div class="row">
+		<!-- static value for now; TODO dynamic variable to update progress bar -->
+	  	<div class="col-progress">
+			<progressbar class="progress-striped active" animate="true" max="count.toString()" value="objLength" type="success">
+				<i><span count-to="{{countTo}}" duration="1" count-from="{{countFrom}}"></span>{{objLength}} / {{count.toString()}}</i>
+			</progressbar>
+	  		<div class="progress-left">
+				<span class="strong">Overall Progress</span>
+	  		</div>
+	  		<div class="progress-right">
+	  			{{progressPercent}}%<br>
+	  		</div>
+	  	</div>
+	</div>
+</div>

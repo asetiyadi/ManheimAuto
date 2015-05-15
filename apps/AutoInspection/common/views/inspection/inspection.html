@@ -1,0 +1,26 @@
+<!-- ========== -->
+<!-- TOP HEADER -->
+<div data-ui-view="header" id="headerContainer"></div>
+
+<!-- ======= -->
+<!-- CONTENT -->
+<div id="inspectionWrapper" autoscroll="false">
+	<div data-ui-view="content" role="main"></div>
+</div>
+
+<!-- ========== -->
+<!-- NAVIGATION -->
+<div id="navigationWrapper" data-ng-controller="navigationCtrl">
+	<ul>
+		<li data-ng-repeat="link in navigationList.nav" data-ng-attr-id="{{link.linkID}}" data-ng-class="{{link.linkClass}}">
+			<a href ui-sref="{{link.linkURL}}" ui-sref-active="active" data-ng-class="{{link.linkClass}}" class="mainLink">{{link.linkTitle}}</a>
+			<ol>
+				<li data-ng-repeat="sublink in link.subLinks" ui-sref-active="active">
+					<a href ui-sref="{{sublink.linkURL}}" data-ng-class="{{sublink.linkClass}}">
+						{{sublink.linkTitle}}
+					</a>
+				</li>
+			</ol>
+		</li>
+	</ul>
+</div>

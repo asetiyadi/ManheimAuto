@@ -1,0 +1,33 @@
+<!-- ========== -->
+<!-- TOP HEADER -->
+<div data-ui-view="header" id="headerContainer"></div>
+
+<div>
+	<!-- ================================ -->
+	<!-- VEHICLES IN PROGRESS (LEFT PANE) -->
+	<div data-ui-view="progress" id="progressContainer"></div>
+	<!-- ===================== -->
+	<!-- MAIN DASHBOARD WINDOW -->
+	<div class="viewWrapper" id="dashboardWrapper">
+		<div class="contentWrapper">
+			<!-- ............ -->
+			<!-- manheim logo -->
+			<div class="manheimLogoSprite"></div>
+			<!-- ......... -->
+			<!-- car image -->
+			<figure class="car">
+				<img src="images/dashboard-car.png" alt="White Car" />
+			</figure>
+			<!-- ..................... -->
+			<!-- new inspection button -->
+			<div id="dashboardBtnWrapper">
+				<a href ui-sref="inspection.vehiclePath" class="redBtn addtlPadding">
+					New Inspection
+				</a>
+			</div>
+		</div>
+	</div>
+	<!-- ===================================== -->
+	<!-- VEHICLES AWAITING REVIEW (RIGHT PANE) -->
+	<div data-ui-view="review" id="reviewContainer"></div>
+</div>

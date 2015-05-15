@@ -1,0 +1,29 @@
+{
+    "precheck": [
+        {
+            "id": 1,
+            "desc": "Has the vehicle been in operation at least 4 months or have a minimum of 4,000 miles?",
+            "name": "precheck_Inspection1"
+        },
+        {
+            "id": 2,
+            "desc": "Is the vehicle 5 model years old or newer with no more than 60,000 miles?",
+            "name": "precheck_Inspection2"
+        },
+        {
+            "id": 3,
+            "desc": "Is the vehicle free from current or evidence of past after market modifications? (Free from chassis. body, electrical, or engine performance modifications; free from any chip or wheel and tire modifications. Dealer installed OEM accessories are acceptable)",
+            "name": "precheck_Inspection3"
+        },
+        {
+            "id": 4,
+            "desc": "Is it certain the vehicle does not have an extensive or unreasonable service history?",
+            "name": "precheck_Inspection4"
+        },
+        {
+            "id": 5,
+            "desc": "Do all VINs match with labels and plates intact? (frame/ windshield/ B-pillar-FMVSS sticker; no alterations)",
+            "name": "precheck_Inspection5"
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+<div data-ng-controller="swipeCtrl">
+	<!-- ========== -->
+	<!-- TOP HEADER -->
+	<div data-ui-view="header" id="headerContainer"></div>
+	<!-- ============ -->
+	<!-- PROGRESS BAR -->
+	<div data-ui-view="progressBar" id="reportProgress"></div>
+	<!-- ======= -->
+	<!-- LOADING -->
+    <div data-ng-show="loading" id="loadingForm">
+    	<div class="loading-modal">
+        	<img src="images/loading.gif" alt="Loading" />
+        	<p>Reloading Vehicle Data . . .</p>
+    	</div>
+    </div>
+	<!-- ======= -->
+	<!-- CONTENT -->
+	<!-- here we are wrapping all of the views that will be displayed within this parent view with a form -->
+	<form id="form-views" data-ng-submit="processForm()" data-ng-model="formData">
+		<div id="formWrapper" data-ui-view="content" role="main" data-ng-swipe-left="nextPage(nextPg)" data-ng-swipe-right="prevPage(prevPg)"></div>
+	</form>
+	<!-- ========== -->
+	<!-- NAVIGATION -->
+	<div data-ui-view="navigation" role="navigation"></div>
+</div>

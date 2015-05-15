@@ -1,0 +1,87 @@
+<div class="viewWrapper" id="summaryWrapper">
+	<div class="contentWrapper">
+		<div class="summaryTbl">
+			<!-- ..................... -->
+			<!-- overall health rating -->
+			<div id="rating" class="left">
+				<h3>Overall Health Rating</h3>
+                	<img src="images/summary/health-grade.png" alt="Overall Health Rating Graph" />
+				<small>&#42;Includes inspection points and vehicle cost analysis</small>
+			</div>
+			<!-- ......................... -->
+			<!-- inspection points summary -->
+			<div id="points" class="right">
+				<h3>Inspection Points Summary</h3>
+                	<img src="images/summary/points-summary.png" alt="Points Summary Graph" />
+			</div>
+		</div>
+		<!-- ................ -->
+		<!-- projected repair -->
+		<div id="repair">
+			<h3>Projected Repair</h3>
+			<div id="repairGraph" class="left"></div>
+			<div class="right">
+				<ul>
+					<li class="tblHeader">
+						<p class="left seventyFive">CRITICAL PARTS</p>
+						<p class="right twentyFive">&#36;900</p>
+					</li>
+					<li>
+						<p class="left seventyFive">Transmission Clutch Repair</p>
+						<p class="right red twentyFive">&#36;600</p>
+					</li>
+					<li>
+						<p class="left seventyFive">Brake Pad Replacement</p>
+						<p class="right red twentyFive">&#36;150</p>
+					</li>
+					<li>
+						<p class="left seventyFive">Bumper Dent Removal</p>
+						<p class="right red twentyFive">&#36;150</p>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ............... -->
+		<!-- pricing summary -->
+		<div id="pricing">
+			<div class="left">
+				<p class="suggested">Suggested Resale Price</p>
+				<h2 class="green">&#36;27&#44;300</h2>
+				<img src="images/vehicles/jeep-wrangler.jpg" alt="2012 Jeep Wrangler" data-ng-show="urlParams === '1C4AJWBG7CL183656'" />
+				<img src="images/vehicles/ford-f150.jpg" alt="2012 Ford F-150" data-ng-show="urlParams === '1FTFW1EF3BFC19451'" />
+				<img src="images/vehicles/ford-fusion.jpg" alt="2013 Ford Fusion" data-ng-show="urlParams === '3FA6P0HR5DR226247'" />
+			</div>
+			<div class="right">
+				<h4>Pricing Summary</h4>
+				<ul>
+					<li>
+						<p class="left seventyFive">Suggested Resale Price</p>
+						<p class="right green twentyFive">&#36;27&#44;300</p>
+					</li>
+					<li>
+						<p class="left seventyFive">Estimated Repair Cost</p>
+						<p class="right red twentyFive">(&#36;1&#44;600)</p>
+					</li>
+					<li>
+						<p class="left seventyFive">Estimated Acquisition Cost</p>
+						<p class="right red twentyFive">(&#36;20&#44;400)</p>
+					</li>
+					<li>
+						<h4 class="left seventyFive">Estimated Profit&nbsp;&nbsp;&nbsp;</h4>
+						<h2 class="right green twentyFive">&#36;5&#44;100</h2>
+					</li>
+				</ul>
+			</div>
+			<a href ui-sref="dashboard.content" id="summaryBtn" class="primaryBtn button">
+				Finish
+			</a>
+		</div>
+
+
+
+
+
+
+		<!--{{formData | json}}-->
+	</div>
+</div>

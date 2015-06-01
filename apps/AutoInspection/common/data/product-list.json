@@ -1,0 +1,184 @@
+{
+    "products": [
+        {
+            "id": "4400212",
+            "category": "Mirrors",
+            "description": "Pilot Mirrors/Mirror - Complete Assembly",
+            "weight": "4.4 lbs",
+            "price": "$89.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/4400212.jpg",
+            "type":"Manual Mirrors"
+        },
+        {
+            "id": "4400211",
+            "category": "Mirrors",
+            "description": "Pilot Mirrors/Mirror - Complete Assembly",
+            "weight": "4.4 lbs",
+            "price": "$89.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/4400211.jpg",
+            "type":"Manual Mirrors"
+        },
+        {
+            "id": "4400342",
+            "category": "Mirrors",
+            "description": "Pilot Mirrors/Mirror - Complete Assembly",
+            "weight": "4.4 lbs",
+            "price": "$100.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/4400342.jpg",
+            "type":"Power Mirrors"
+        },
+        {
+            "id": "4400341",
+            "category": "Mirrors",
+            "description": "Pilot Mirrors/Mirror - Complete Assembly",
+            "weight": "4.4 lbs",
+            "price": "$100.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/4400341.jpg",
+            "type":"Power Mirrors"
+        },
+        {
+            "id": "DG949410AR",
+            "category": "Mirrors",
+            "description": "Pilot Mirrors/Mirror - Complete Assembly",
+            "weight": "4.4 lbs",
+            "price": "$110.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/DG949410AR.gif",
+            "type":"Power Mirrors"
+        },
+        {
+            "id": "DG949410AL",
+            "category": "Mirrors",
+            "description": "Pilot Mirrors/Mirror - Complete Assembly",
+            "weight": "4.4 lbs",
+            "price": "$110.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/DG949410AL.gif",
+            "type":"Power Mirrors"
+        },
+        {
+            "id": "56210",
+            "category": "Glass",
+            "description": "Dorman HELP!/Mirror - Replacement Glass",
+            "weight": "0.73 lbs",
+            "price": "$18.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/56210.jpg",
+            "type": "Driver side"
+        },
+        {
+            "id": "56211",
+            "category": "Glass",
+            "description": "Dorman HELP!/Mirror - Replacement Glass",
+            "weight": "0.73 lbs",
+            "price": "$40.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/56211.jpg",
+            "type": "Passenger Side"
+        },
+        {
+            "id": "5301H",
+            "category": "Glass",
+            "description": "Burco/Mirror - Replacement Glass",
+            "weight": "0.8 lbs",
+            "price": "$68.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/5301H.jpg",
+            "type": "Passenger Side"
+        },
+        {
+            "id": "4220H",
+            "category": "Glass",
+            "description": "Burco/Mirror - Replacement Glass",
+            "weight": "0.8 lbs",
+            "price": "$68.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/4220H.jpg",
+            "type": "Driver Side"
+        },
+        {
+            "id": "4221H",
+            "category": "Glass",
+            "description": "Burco/Mirror - Replacement Glass",
+            "weight": "0.5 lbs",
+            "price": "$68.00",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/4221H.jpg",
+            "type": "Driver Side"
+        },
+        {
+            "id": "4220HRSG",
+            "category": "Glass",
+            "description": "Burco/Mirror - Replacement Glass",
+            "weight": "1.1 lbs",
+            "price": "$54.00",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/4220HRSG.jpg",
+            "type": "Driver Side"
+        },
+        {
+            "id": "898",
+            "category": "Windows",
+            "description": "Duralast/Power Window Motor Connector",
+            "weight": "0.15 lbs",
+            "price": "$34.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/898.jpg",
+            "type": "Male Connector / 4 Female Blade"
+        },
+        {
+            "id": "1013",
+            "category": "Windows",
+            "description": "Duralast/Power Window Motor Connector",
+            "weight": "0.491 lbs",
+            "price": "$49.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/1013.jpg",
+            "type": "Male Connector / 6 Female Blade"
+        },
+        {
+            "id": "742-942",
+            "category": "Windows",
+            "description": "Dorman/Window Lift Motor",
+            "weight": "1.5 lbs",
+            "price": "$89.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/742-942.jpg",
+            "type": "Front - Driver Side"
+        },
+        {
+            "id": "742-940",
+            "category": "Windows",
+            "description": "Dorman/Window Lift Motor",
+            "weight": "1.5 lbs",
+            "price": "$59.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/742-940.jpg",
+            "type": "Front - Driver Side"
+        },
+        {
+            "id": "742-941",
+            "category": "Windows",
+            "description": "Dorman/Window Lift Motor",
+            "weight": "1.5 lbs",
+            "price": "$59.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/742-941.jpg",
+            "type": "Front - Passenger Side"
+        },
+        {
+            "id": "749-508",
+            "category": "Windows",
+            "description": "Dorman/Window Lift Motor",
+            "weight": "3.2 lbs",
+            "price": "$61.99",
+            "location": "Window, Glass and Mirrors",
+            "imagePath": "../images/products/749-508.jpg",
+            "type": "Front - Driver Side"
+        }
+    ]
+}

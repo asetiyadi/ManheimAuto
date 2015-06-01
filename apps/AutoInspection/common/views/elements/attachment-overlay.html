@@ -1,0 +1,24 @@
+<div id="attachmentOverlayModal">
+	<!-- ============== -->
+	<!-- DYNAMIC HEADER -->
+	<div class="modalHeader">
+		<div class="ng-modal-close" data-ng-click="cancel()">Cancel</div>
+		<h4>Add Attachment</h4>
+		<div class="ng-modal-submit" data-ng-click="submit()">Submit</div>
+	</div>
+	<!-- ========= -->
+	<!-- ADD PHOTO -->
+	<div id="overlayPhotoWrapper">
+		<label>
+			<input type="file" accept="image/*" data-ng-model="photo" onchange="angular.element(this).scope().change(this)" data-ng-file-select="onFileSelect($files)" multiple>
+			<div class="iconWrapper">
+				<span id="camera-icon"></span>
+			</div>
+		</label>
+	</div>
+	<!-- ======= -->
+	<!-- CONTENT -->
+	<div class="overlayContent">
+		<textarea data-ng-model="fields.note"></textarea>
+	</div>
+</div>

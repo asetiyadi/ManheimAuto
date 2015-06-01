@@ -12,6 +12,5 @@
     './mainCtrl',
     './navigationCtrl',
     './overlayModalCtrl',
-    './swipeCtrl',
-    './progressBarCtrl'
+    './swipeCtrl'
  ], function () {});

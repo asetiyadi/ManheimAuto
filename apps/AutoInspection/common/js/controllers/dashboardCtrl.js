@@ -7,8 +7,9 @@
  *****************************************************************************************/
  define(['./module'], function (controllers) {
  	'use strict';
- 	controllers.controller('dashboardCtrl', ['$scope',
- 		function ($scope) {
+ 	controllers.controller('dashboardCtrl', ['$scope','$rootScope',
+ 		function ($scope,$rootScope) {
+ 			$scope.techName = $rootScope.userInfo.firstname + ' ' + $rootScope.userInfo.lastname;
 		/*******************************************************
 		*  INSPECTION STUB DATA                           
 		*******************************************************/
@@ -18,7 +19,7 @@
 	 			name: 'Vehicle 7',
 	 			date: '12-7-14',
 	 			image: 'images/vehicle-types/truck.png', 
-	 			tech: 'John Smith', 
+	 			tech: $scope.techName,
 	 			completion: '65%',
 	 			manager: 'Beth Maxwell',
 	 			clickFunction: 'reviewInspection("silver","1FTFW1EF3BFC19451")'
@@ -28,7 +29,7 @@
 	 			name: 'Vehicle 8',
 	 			date: '12-7-14',
 	 			image: 'images/vehicle-types/sedan.png', 
-	 			tech: 'John Smith', 
+	 			tech: $scope.techName,
 	 			completion: '90%',
 	 			manager: 'Beth Maxwell',
 	 			clickFunction: 'reviewInspection("gold","3FA6P0HR5DR226247")'

@@ -1,0 +1,20 @@
+<div class="viewWrapper" id="progressWrapper">
+	<h4>Inspections in Progress</h4>
+	<ul>
+		<li data-ng-repeat="vehicle in inspectionStubDate">
+			<a href data-ng-click="{{vehicle.clickFunction}}">
+				<figure>
+					<img data-ng-src="{{vehicle.image}}" alt="{{vehicle.name}}" />	
+				</figure>
+				<div>
+					<span class="strong">{{vehicle.lotNum}}&nbsp;&#124;&nbsp;</span>
+					<span class="strong">{{vehicle.name}}&nbsp;&#124;&nbsp;</span>
+					<span class="strong">{{vehicle.date}}</span>
+					<br>
+					{{vehicle.tech}}
+					{{vehicle.completion}}
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>

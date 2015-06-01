@@ -107,16 +107,56 @@ function submitAuthentication(username, password) {
 	
 	var response = WL.Server.invokeHttp(input); 
 	
-	WL.Logger.warn(response.array[0]);
+	/*var response = {
+	    "array": [
+	              {
+	                  "username": "jsmith",
+	                  "_id": "55438e21e4b0e29750cb8fc4",
+	                  "techId": "jsmith01",
+	                  "email": "jsmith@technician.com",
+	                  "lastname": "Smith",
+	                  "firstname": "James",
+	                  "password": "letmein"
+	              }
+	          ],
+      "isSuccessful": true,
+      "statusCode": 200,
+      "statusReason": "OK",
+      "responseHeaders": {
+          "X-Global-Transaction-ID": "2043776981",
+          "X-Cf-Requestid": "dc6cf739-ed37-497c-4604-4c45cf3240d8",
+          "Etag": "W/\"a8-439d1452\"",
+          "X-Client-IP": "184.96.58.149",
+          "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
+          "Connection": "Keep-Alive",
+          "X-Powered-By": "Express",
+          "Access-Control-Allow-Headers": "Content-type,Accept,X-Access-Token,X-Key",
+          "X-Backside-Transport": "OK OK",
+          "Transfer-Encoding": "chunked",
+          "Access-Control-Allow-Origin": "*",
+          "Date": "Fri, 15 May 2015 21:10:15 GMT",
+          "Content-Type": "application/json; charset=utf-8"
+      },
+      "responseTime": 106,
+      "totalTime": 153
+  };*/
 	
-	if(response.array.length > 0) {
+	WL.Logger.warn("submitAuthentication - response = " + JSON.stringify(response));
+	
+	return response;
+}
+
+function setIdentity(userObj) {
+	WL.Logger.warn("setIdentity - userObj = " + JSON.stringify(userObj));
+	
+	if(userObj.username != undefined) {
 		
 		var identity = {
-			userId: username,
-			displayName: response.array[0].firstname + " " + response.array[0].lastname,
+			userId: userObj.username,
+			displayName: userObj.firstname + " " + userObj.lastname,
 			attributes: {
 				role: "technician",
-				techId: response.array[0].techId
+				techId: userObj.techId
 			}
 		};
 		WL.Logger.warn("identity = " + JSON.stringify(identity));
@@ -129,55 +169,9 @@ function submitAuthentication(username, password) {
 	else {
 		
 		WL.Logger.warn("BluemixHTTP Adapater - verifyUser: User not found");
-		WL.Logger.warn(response.array[0]);
+		WL.Logger.warn(userObj);
 		return onAuthRequired(null, "Invalid login credential");
 	}
-	/*WL.Server.invokeHttp(input, {
-		onSuccess: function(data) {
-			WL.Logger.warn("submitAuthentication invocation result: " + JSON.stringify(data));
-			if(!data.responseJSON && data.responseJSON.array.length > 0) {
-				
-				var identity = {
-					userId: username,
-					displayName: data.responseJSON.array[0].firstname + " " + data.responseJSON.array[0].lastname,
-					attributes: {
-						role: "technician",
-						techId: data.responseJSON.array[0].techId
-					}
-				};
-				
-				WL.Server.setActiveUser("AdapterAuthRealm", identity);
-				
-				return {
-					authRequired: false
-				};
-			}
-			else {
-				WL.Logger.warn("BluemixHTTP Adapater - verifyUser: User not found");
-				return onAuthRequired(null, "Invalid login credential");
-			}
-		},
-		onFailure: function(error) {
-			WL.Logger.warn("submitAuthentication failure: " + error);
-		}
-	});*/
-	
-	//WL.Logger.debug("REST - response: " + response);*/
-	
-	
-	
-	
-	/*var input = {
-			headers: {"Content-Type": "application/json"},
-            method: "POST",
-            path: "http://localhost:8000/api/verifyUser",
-            body: {
-            	"contentType": "application/json",
-            	"content": JSON.stringify(userInfo)
-            }
-	};
-	WL.Logger.info("input = " + JSON.stringify(input));
-	return WL.Server.invokeHttp(input);*/
 }
 
 function onAuthRequired(headers, errorMessage) {

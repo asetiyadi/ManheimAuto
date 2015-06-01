@@ -20,6 +20,9 @@
 	
 	// # The options of busy indicator used during application start up
 	//busyOptions: {text: "Loading..."}
+		 
+	 logger : {enabled: true, level: 'debug', stringify: true, pretty: false,
+			tag: {level: false, pkg: true}, whitelist: [], blacklist: []},
 };
 
 if (window.addEventListener) {

@@ -1,0 +1,89 @@
+<div class="viewWrapper bronze" id="dealerVehicleWrapper" data-ng-cloak>
+	<div class="contentWrapper">
+		<div id="results-body">
+			<div class="group">
+				<p>Dealer Name:&nbsp;</p>
+				<span data-ng-model="formData.dealerName">DW EXCHANGE</span>
+			</div>
+			<div class="group">
+				<p>Dealer#:&nbsp;</p>
+				<span data-ng-model="formData.dealerNumber">012345678</span>
+			</div>
+			<hr>
+			<div class="group">
+				<p>Vin#:&nbsp;</p>
+				<span data-ng-model="formData.urlParams">{{urlParams ||
+					vinNum}}</span>
+			</div>
+			<div class="group">
+				<p>Make:&nbsp;</p>
+				<span data-ng-model="formData.vehicleMake">{{make}}</span>
+			</div>
+			<div class="group">
+				<p>Model:&nbsp;</p>
+				<span data-ng-model="formData.vehicleModel">{{model}}</span>
+			</div>
+			<div class="group">
+				<p>Year:&nbsp;</p>
+				<span data-ng-repeat="years in vehicleData.years"
+					data-ng-model="formData.vehicleYear">{{years.year}}</span>
+			</div>
+			<div class="group">
+				<p>Color:&nbsp;</p>
+				<span data-ng-model="formData.vehicleColor">Gold</span>
+				<!-- {{colors.color || 'N/A'}} -->
+			</div>
+			<hr>
+			<div class="group">
+				<p>Inspection Date:&nbsp;</p>
+				<span data-ng-model="formData.inspectionDate">{{date |
+					date:'MM/dd/yy'}}</span>
+			</div>
+			<div class="group">
+				<p>CPO Tech Name:&nbsp;</p>
+				<span data-ng-model="formData.techName">John Smith</span>
+			</div>
+			<div class="group">
+				<p>Tech Code:&nbsp;</p>
+				<span data-ng-model="formData.techCode">Aq1204</span>
+			</div>
+			<div class="group">
+				<p>Repair Order#:&nbsp;</p>
+				<span data-ng-model="formData.orderNumber">10243</span>
+			</div>
+		</div>
+		<!-- ........... -->
+		<!-- add picture -->
+		<div id="addPhotoWrapper">
+			<label> <input type="file" accept="image/*"
+				data-ng-model="photo"
+				onchange="angular.element(this).scope().change(this)"
+				data-ng-file-select="onFileSelect($files)" multiple>
+				<div class="iconWrapper">
+					<span id="photo"></span>
+					<p id="file-name">
+						<span data-ng-show="!newTxt"> Add Picture </span> {{newTxt}}
+					</p>
+				</div>
+			</label>
+		</div>
+		<div class="vehicleImg"
+			data-ng-show="(urlParams === '1C4AJWBG7CL183656') || (vinNum === '1C4AJWBG7CL183656')">
+			<img src="images/vehicles/jeep-wrangler.jpg" alt="2012 Jeep Wrangler" />
+		</div>
+		<div class="vehicleImg"
+			data-ng-show="(urlParams === '1FTFW1EF3BFC19451') || (vinNum === '1FTFW1EF3BFC19451')">
+			<img src="images/vehicles/ford-f150.jpg" alt="2012 Ford F-150" />
+		</div>
+		<div class="vehicleImg"
+			data-ng-show="(urlParams === '3FA6P0HR5DR226247') || (vinNum === '3FA6P0HR5DR226247')">
+			<img src="images/vehicles/ford-fusion.jpg" alt="2013 Ford Fusion" />
+		</div>
+		<!-- ..................... -->
+		<!-- new inspection button -->
+		<div id="dealerBtnWrapper">
+			<a href ui-sref="inspection.report.preCheck"
+				class="primaryBtn addtlPadding"> Start Inspection </a>
+		</div>
+	</div>
+</div>

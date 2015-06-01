@@ -1,0 +1,19 @@
+<div class="viewWrapper" id="reviewWrapper">
+	<h4>Awaiting Review</h4>
+	<ul>
+		<li data-ng-repeat="vehicle in reviewStubDate">
+			<a href="">
+				<figure>
+					<img data-ng-src="{{vehicle.image}}" alt="{{vehicle.name}}" />	
+				</figure>
+				<div>
+					<span class="strong">{{vehicle.lotNum}}&nbsp;&#124;&nbsp;</span>
+					<span class="strong">{{vehicle.name}}&nbsp;&#124;&nbsp;</span>
+					<span class="strong">{{vehicle.date}}</span>
+					<br>
+					{{vehicle.manager}}
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>

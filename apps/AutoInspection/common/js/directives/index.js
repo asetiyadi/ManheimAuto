@@ -9,6 +9,5 @@
  	'./inputFocusDirective',
  	'./modalWindowDirective',
  	'./pageTitleDirective',
- 	'./qrCodeDirective',
  	'./updateTitleDirective',
  ], function () {});

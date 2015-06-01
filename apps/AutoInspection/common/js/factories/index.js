@@ -7,6 +7,6 @@
  define([
  	'./navigationFactory',
  	'./reportFactory',
- 	'./tempReportFactory',
- 	'./userFactory'
+ 	'./userFactory',
+ 	'./productListFactory'
  ], function () {});

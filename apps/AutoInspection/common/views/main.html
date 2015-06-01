@@ -5,47 +5,35 @@
 <!-- ================= -->
 <!-- DASHBOARD SECTION -->
 <div data-ng-show="$state.includes('dashboard')">
-	<!-- vehicles: progress -->
+	<!-- reports in progress -->
 	<div data-ui-view="progress" id="progressContainer"></div>
-
-	<!-- mobile progress toggle -->
-	<div id="mobileProgressToggle">
-		<i class="fa fa-reorder"></i>
-		Progress
-	</div>
-	<!-- mobile review toggle -->
-	<div id="mobileReviewToggle">
-		<i class="fa fa-reorder"></i>
-		Review
-	</div>
-
 	<!-- main content -->
 	<div class="viewWrapper" id="dashboardWrapper">
 		<div class="contentWrapper">
 			<div class="manheimLogoSprite"></div>
 			<figure class="car">
-				<img src="images/dashboard-car.png" alt="White Car" />
+				<img src="images/dashboard-car.png" alt="Blue Car" />
 			</figure>
-			<div id="dashboardBtnWrapper">
-				<a href ui-sref="inspection.vehiclePath" class="redBtn addtlPadding">
-					New Inspection
-				</a>
+			<!-- new inspection path -->
+			<div id="inspectionPathWrapper">
+				<a href data-ng-click="startInspection('bronze')" class="bronze-inspection button">80 Point Inspection</a>
+				<a href data-ng-click="startInspection('silver')" class="silver-inspection button">150 Point Inspection</a>
+				<a href data-ng-click="startInspection('gold')" class="primaryBtn gold-inspection button">300 Point Inspection</a>
+				<h2>Start a New Inspection</h2>
 			</div>
 		</div>
 	</div>
-	<!-- vehicles: awaiting review -->
+	<!-- reports in review -->
 	<div data-ui-view="review" id="reviewContainer"></div>
 </div>
 
 <!-- ================== -->
 <!-- INSPECTION SECTION -->
 <div data-ng-show="$state.includes('inspection')">
-
 	<!-- content -->
 	<div id="inspectionWrapper" autoscroll="false">
 		<div data-ui-view="content" role="main"></div>
 	</div>
-
 	<!-- navigation -->
 	<div id="navigationWrapper" data-ng-controller="navigationCtrl" data-ng-show="$state.includes('inspection.report')">
 		<ul>

@@ -7,6 +7,7 @@
 *  2.) BASE _________________________________ @base
 *  3.) LOADING SCREEN _______________________ @loadingScreen
 *  4.) OVERLAY MODAL ________________________ @overlayModal
+*  5.) MEDIA QUERIES ________________________ @mediaQueries
 *
 *****************************************************************************************/
 
@@ -275,9 +276,9 @@ input.form-control {
     margin: 0 auto;
     margin-top: 13em;
     display: table;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
     position: relative;
 }
 #loadingWrapper div {
@@ -304,7 +305,9 @@ input.form-control {
 /*********************************************
 *  OVERLAY MODAL                 @overlayModal
 **********************************************/
-#overlayModal {
+#infoOverlayModal,
+#attachmentOverlayModal,
+#productOverlayModal {
     position: absolute;
     z-index: 9999;
     top: 0;
@@ -312,25 +315,68 @@ input.form-control {
     width: 100%;
     height: 100%;
     border: 1px solid #bab7b2;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #EFEEEC;
 }
-#modalHeader {
-    background-color: #efeeec;
-    height: 4em;
+#productOverlayModal .overlayContent {
+    margin: 0 auto;
     width: 100%;
-    -webkit-border-radius: 4px;
-    -moz-border-radius: 4px;
-    border-radius: 4px;
-    border-bottom: 1px solid #b7b2ac;
+    height: 70%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: #FFF;
+    border-bottom: 1px solid #B7B2AC;
 }
-#modalHeader h4 {
+#infoOverlayModal .overlayContent,
+#attachmentOverlayModal .overlayContent {
+    position: absolute;
+    top: 5em;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 95%;
+    height: 60%;
+}
+.overlayContent textarea {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #FFF;
+    border-radius: 6px;
+    padding: 0.25em 0.5em;
+}
+#productOverlayModal .modalHeader h4 {
     position: absolute;
     top: 0;
-    left: 0;
-    width: 100%;
+    right: 0;
+    width: 70%;
     height: 100%;
+    text-align: center;
+    margin: 0.8em auto 0;
+    line-height: 1.5em;
+    font-size: 0.9em;
+    color: #00305e;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.modalHeader {
+    background-color: #efeeec;
+    min-height: 4em;
+    height: auto;
+    width: 100%;
+    -webkit-border-radius: 6px 6px 0 0;
+    -moz-border-radius: 6px 6px 0 0;
+    border-radius: 6px 6px 0 0;
+    border-bottom: 1px solid #b7b2ac;
+    position: relative;
+}
+.modalHeader h4 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 3.3em;
     text-align: center;
     margin: 0;
     line-height: 3.1em;
@@ -338,6 +384,220 @@ input.form-control {
     color: #00305e;
     font-weight: bold;
     text-transform: capitalize;
+}
+.modalHeader .back-button {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 9em;
+    cursor: pointer;
+    z-index: 1;
+}
+.modalHeader .back-button i {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #6F6D68;
+    float: left;
+    margin-left: 0.25em;
+    height: 100%;
+    line-height: 1.5em;
+}
+.modalHeader .back-button p {
+    font-size: 1.5em;
+    color: #6F6D68;
+    height: 100%;
+    line-height: 2.5em;
+    float: left;
+    margin-left: 0.5em;
+}
+ul.top-navigation {
+    padding: 0;
+    margin: 0.3em auto;
+    display: inline-table;
+    text-align: center;
+    font-size: 1.25em;
+    list-style-type: none;
+}
+ul.top-navigation li {
+    display: inline-block;
+    width: 8em;
+    height: 2.5em;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+ul.top-navigation li.list {
+    border: 1px solid #999;
+    border-radius: 6px 0 0 6px;
+}
+ul.top-navigation li.summary {
+    border-bottom: 1px solid #999;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    border-radius: 0 6px 6px 0;
+}
+ul.top-navigation li.list.active,
+ul.top-navigation li.summary.active {
+    background-color: #747474;
+    color: #EFEEEC;
+}
+ul.top-navigation li div {
+    height: 100%;
+    padding: 0.6em;
+}
+#productOverlayModal .modalFooter {
+    width: 100%;
+    height: 5em;
+}
+ul.product-footer {
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0.5em;
+}
+ul.product-footer li {
+    display: inline-block;
+    cursor: pointer;
+    width: 9em;
+    padding: 0;
+    margin: 0;
+}
+ul.product-footer li figure img {
+    height: auto;
+    width: 3em;
+}
+ul.list-view{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #B7B2AC;
+}
+ul.summary-view {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid #B7B2AC;
+    text-align: left;
+    line-height: 0.5em;
+    height: 100%;
+    width: 100%;
+}
+ul.summary-view .description {
+    height: 100%;
+    width: 100%;
+    padding: 0.65em;
+}
+ul.list-view li,
+ul.summary-view li {
+    border-bottom: 1px solid #B7B2AC;
+    padding: 0.5em;
+    position: relative;
+}
+ul.list-view li:last-child,
+ul.summary-view li:last-child {
+    border-bottom: none;
+}
+ul.list-view figure {
+    width: 100%;
+    height: 100%;
+}
+ul.list-view figure img {
+    height: auto;
+    width: 10em;
+}
+ul.list-view .description {
+    width: 100%;
+}
+ul.list-view .description h4 {
+    color: #747474;
+    font-size: 1em;
+    font-weight: bold;
+}
+ul.list-view .product-details {
+    width: 100%;
+}
+ul.summary-view .product-details {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+ul.summary-view .product-details i {
+    color: #747474;
+    font-weight: bold;
+    font-size: 3em;
+    cursor: pointer;
+    float: right;
+    line-height: 1.9em;
+    margin-right: 0.05em;
+}
+ul.list-view .product-details i {
+    color: #747474;
+    font-weight: bold;
+    font-size: 3.5em;
+    cursor: pointer;
+    float: right;
+    margin-right: 0.25em;
+}
+.selected-view {
+    width: 100%;
+    height: 100%;
+}
+.selected-product-image img {
+    height: auto;
+    width: 8em;
+}
+.selected-view .description {
+    width: 100%;
+    text-align: left;
+    padding: 0.75em;
+}
+.selected-view .description h4 {
+    color: #868686;
+    font-size: 1em;
+}
+.selected-view .description table {
+    width: 100%;
+}
+#overlayPhotoWrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 3em;
+    margin: 0;
+    padding: 0;
+    display: table;
+}
+#overlayPhotoWrapper label {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0;
+    margin-right: 2em;
+    float: right;
+    clear: both;
+}
+#overlayPhotoWrapper label > input[type=file] {
+    visibility: hidden;
+    position: absolute;
+}
+#overlayPhotoWrapper .iconWrapper {
+    display: table;
+}
+#overlayPhotoWrapper label > input + .iconWrapper span {
+    cursor: pointer;
+    height: 4.5em;
+    width: 4.5em;
+    display: table-cell;
+    vertical-align: middle;
+}
+#camera-icon {
+    background: url('../images/camera-icon.png') center center no-repeat;
+    background-size: 75% auto;
 }
 .modal-backdrop {
     height: 100%;
@@ -356,4 +616,69 @@ input.form-control {
     font-size: 1.2em;
     color: #00305e;
     z-index: 1;
+}
+.ng-modal-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    padding: 0.95em;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: #00305e;
+    z-index: 1;
+}
+
+/*********************************************
+*  MEDIA QUERIES                 @mediaQueries
+**********************************************/
+/* 500px */
+@media all and (min-width: 31.250em) {
+    ul.list-view li {
+        width: 100%;
+        height: 12em;
+    }
+    ul.summary-view li {
+        width: 100%;
+        height: 6.5em;
+    }
+    ul.list-view figure {
+        width: 30%;
+        height: 100%;
+        float: left;
+    }
+    ul.list-view .description {
+        width: 65%;
+        float: right;
+        text-align: left;
+        padding-right: 5em;
+    }
+    ul.list-view .product-details {
+        position: absolute;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        cursor: pointer;
+    }
+    ul.list-view .product-details i {
+        line-height: 3.4em;
+    }
+    ul.product-footer li {
+        width: 10em;
+    }
+    #productOverlayModal {
+        min-height: 40em;
+    }
+    #productOverlayModal .overlayContent {
+        height: 77%;
+    }
+    #productOverlayModal .modalHeader h4 {
+        width: 100%;
+        font-size: 1.2em;
+    }
+    .selected-product-image img {
+        height: auto;
+        width: 15em;
+    }
 }

@@ -32,6 +32,15 @@
     	$rootScope.$state = $state;
     	$rootScope.$stateParams = $stateParams; 
 		$rootScope.inspectionPath = $rootScope.$stateParams.inspectionPath;
+		$rootScope.userInfo = {
+	        username: 'jsmith',
+	        password: 'letmein',
+	        firstname: 'Jacob',
+	        lastname: 'Smith',
+	        email: 'jsmith@manheim.com',
+	        techId: '09832'
+	    };
+	    $rootScope.token = "";
     	//close any open modal dialogs if user presses browser back/fwd buttons
 		$rootScope.$on('$locationChangeStart', function (event) {
 			var top = $modalStack.getTop();

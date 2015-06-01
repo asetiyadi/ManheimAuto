@@ -1,5 +1,5 @@
 <div class="viewWrapper" id="headerWrapper" data-ng-controller="headerCtrl">
-	<h4 class="headerName" data-ng-show="$state.is('dashboard.content')">Welcome, John</h4><!-- TODO: dynamic name -->
+	<h4 class="headerName" data-ng-show="$state.is('dashboard.content')">Welcome, {{userFirstName}}</h4>
 	<h4 class="headerName" data-ng-show="$state.is('inspection.vehiclePath')">Choose your inspection path</h4>
 	<h4 class="headerName" data-ng-show="$state.is('inspection.vinScanner')">VIN Scanner</h4>
 	<h4 class="headerName" data-ng-show="$state.is('inspection.report.dealerVehicleInfo')">Dealer and Vehicle Info</h4>

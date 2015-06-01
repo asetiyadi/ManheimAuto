@@ -7,24 +7,12 @@
              disclosure restricted by GSA ADP Schedule Contract with IBM Corp. -->	
 
 	 <staticResources>
-	 <!--  
-	   		<resource id="logUploadServlet" securityTest="LogUploadServlet">
-			<urlPatterns>/apps/services/loguploader*</urlPatterns>
-		</resource>
-		-->
 		<resource id="subscribeServlet" securityTest="SubscribeServlet">
 			<urlPatterns>/subscribeSMS*;/receiveSMS*;/ussd*</urlPatterns>
 		</resource>
-		
 	</staticResources> 
 
-   <!--  Sample security tests  
-         Even if not used there will be some default webSecurityTest and mobileSecurityTest 
-         
-		 Attention: If you are adding an app authenticity realm to a security test, 
-		 you must also update the application-descriptor.xml. Please refer to the user documentation 
-		 on application authenticity for environment specific guidelines. -->   
-         
+       
 	 <securityTests>
        	<!-- 
 		<mobileSecurityTest name="mobileTests">

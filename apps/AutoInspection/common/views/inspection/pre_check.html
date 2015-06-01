@@ -1,0 +1,58 @@
+<div class="viewWrapper" id="preCheckWrapper">
+	<div data-ui-view="reportData"></div>
+</div>
+
+<div class="viewWrapper" id="preCheckWrapper">
+	<div class="contentWrapper">
+		<h3 data-ng-model="text" data-ng-init="text='Pre-Check'">{{text}}</h3>
+		<div id="topWrapper">
+			<div class="leftContainer">
+				<span class="textWrap">
+					CARFAX Vehicle History Report
+				</span>
+				<span class="imgWrap">
+					<figure>
+						<img src="images/yes-btn.png" alt="Green Check" />
+					</figure>
+					<figcaption>Passed</figcaption>
+				</span>
+			</div>
+			<div class="rightContainer">
+				<p>Enter actual mileage</p>
+				<input type="text" id="precheckMileage" class="form-control" value="18,688" />
+			</div>
+		</div>
+		<div class="mainContentArea">
+			<div id="top-container">
+				<ul id="pre-heading">
+					<li class="left">Yes</li>
+					<li class="right">No</li>
+				</ul>
+			</div>
+			<ul id="precheckList">
+				<li data-ng-repeat="content in dataForm track by $index">
+					<div class="desc col-1">{{content.desc}}</div>
+					<div class="yesOpt col-2">
+						<label>
+							<input type="radio" name="{{content.name}}" value="yes" data-ng-model="formData[content.name]" />
+							<div class="iconWrapper">
+								<span class="yes-photo"></span>
+							</div>
+						</label>
+					</div>
+					<div class="noOpt col-2">
+						<label>
+							<input type="radio" name="{{content.name}}" value="no" data-ng-model="formData[content.name]" />
+							<div class="iconWrapper">
+								<span class="no-photo"></span>
+							</div>
+						</label>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div id="swipeWrapper">
+			<span>&#60;&#60; Swipe to Navigate &#62;&#62;</span>
+		</div>
+	</div>
+</div>

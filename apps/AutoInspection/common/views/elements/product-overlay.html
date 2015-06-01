@@ -1,0 +1,132 @@
+<div id="productOverlayModal">
+	<!-- ============================ -->
+	<!-- LIST/SUMMARY VIEW TOP HEADER -->
+	<div class="modalHeader" data-ng-show="listMenu || summaryMenu">
+		<ul class="top-navigation">
+			<li class="list" data-ng-class="listMenu ? 'active' : 'inactive'">
+				<div data-ng-click="toggleList()">
+					List
+				</div>
+			</li>
+			<li class="summary" data-ng-class="summaryMenu ? 'active' : 'inactive'">
+				<div data-ng-click="toggleSummary()">
+					Summary
+				</div>
+			</li>
+		</ul>
+	</div>
+	<!-- =========================== -->
+	<!-- SELECTED PRODUCT TOP HEADER -->
+	<div class="modalHeader" data-ng-show="selectedProduct">
+		<div class="back-button" data-ng-click="backToProductList()">
+			<i class="fa fa-angle-left"></i>
+			<p>Back</p>
+		</div>
+		<h4>{{selected.description}}</h4>
+	</div>
+	<!-- ======= -->
+	<!-- CONTENT -->
+	<div class="overlayContent">
+		<!-- ......... -->
+		<!-- list view -->
+		<ul data-ng-show="listMenu" class="list-view">
+			<li data-ng-repeat="product in productList">
+				<figure class="product-image">
+					<img data-ng-src="{{product.imagePath}}" alt="{{product.description}}" /> 
+				</figure>
+				<div class="description">
+					<h4>{{product.description}}</h4>
+					<p>{{product.id}}</p>
+					<p class="strong">Weight:</p>
+					<p>{{product.weight}}</p>
+					<p><span class="strong">{{product.location}}</span>&nbsp;&#62;&nbsp;{{product.category}}</p>
+				</div>
+				<div class="product-details" data-ng-click="selectProduct(product)">
+					<i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- ............ -->
+		<!-- summary view -->
+		<ul data-ng-show="summaryMenu" class="summary-view">
+			<li data-ng-repeat="product in productList">
+				<div class="description">
+					<p>{{product.description}}</p>
+					<p><span class="strong">Part Number:</span>{{product.id}}</p>
+					<p><span class="strong">Weight:</span>&nbsp;{{product.weight}}</p>
+					<p><span class="strong">{{product.location}}</span>&nbsp;&#62;&nbsp;{{product.category}}</p>
+				</div>
+				<div class="product-details" data-ng-click="selectProduct(product)">
+					<i class="fa fa-angle-right"></i>
+				</div>
+			</li>
+		</ul>
+		<!-- ..................... -->
+		<!-- selected product view -->
+		<div data-ng-show="selectedProduct" class="selected-view">
+			<figure class="selected-product-image">
+				<img data-ng-src="{{selected.imagePath}}" alt="{{selected.description}}" /> 
+			</figure>
+			<div class="description">
+				<h4>{{selected.description}}</h4>
+				<table>
+					<thead>
+						<tr>
+							<th>Product</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Part Number
+							<td>{{selected.id}}</td>
+						</tr>
+						<tr>
+							<td>Weight</td>
+							<td>{{selected.weight}}</td>
+						</tr>
+						<tr>
+							<td>Price</td>
+							<td>{{selected.price}}</td>
+						</tr>
+						<tr>
+							<td>Type</td>
+							<td>{{selected.type}}</td>
+						</tr>
+						<tr>
+							<td>Category</td>
+							<td>{{selected.category}}</td>
+						</tr>
+						<tr>
+							<td>Location</td>
+							<td>{{selected.location}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<!-- ============== -->
+	<!-- DYNAMIC FOOTER -->
+	<div class="modalFooter">
+		<ul class="product-footer">
+			<li data-ng-show="listMenu || summaryMenu">
+				<figure>
+					<img src="images/product-pick-disabled.png" alt="Select Product" />
+				</figure>
+				<figcaption>Pick</figcaption>
+			</li>
+			<li data-ng-show="selectedProduct">
+				<figure>
+					<img src="images/product-pick-enabled.png" alt="Select Product" />
+				</figure>
+				<figcaption>Pick</figcaption>
+			</li>
+			<li>
+				<figure>
+					<img src="images/product-orders-enabled.png" alt="List of Orders" />
+				</figure>
+				<figcaption>Orders</figcaption>
+			</li>
+		</ul>
+	</div>
+</div>

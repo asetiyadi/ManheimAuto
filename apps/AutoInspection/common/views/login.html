@@ -1,0 +1,31 @@
+<div class="viewWrapper" id="authenticateWrapper">
+	<!-- ============== -->
+	<!-- LOADING SCREEN -->
+	<div id="loadingScreen" data-ng-show="loading">
+		<div id="loadingWrapper">
+			<div>
+				<img src="images/loading.gif" alt="Loading Icon" />
+				<p>Loading . . .</p>
+			</div>
+		</div>
+	</div>
+	<!-- ========== -->
+	<!-- LOGIN FORM -->
+	<div id="loginWrapper">
+		<div class="manheimLogoSprite"></div>
+		<form name="loginForm" data-ng-submit="verifyUser()">
+			<div class="form-group">
+				<input type="text" id="username" name="username" class="btnCtrl" data-ng-model="userInfo.username" placeholder="Username">
+			</div>
+			<div class="form-group">
+				<input type="password" id="password" name="password" class="btnCtrl" data-ng-model="userInfo.password" placeholder="Password">
+			</div>
+			<div class="form-group">
+				<span data-ng-show="incorrectAuth">Please enter the correct username and password</span>
+				<input type="submit" value="Login" class="primaryBtn button">
+				<a href ui-sref="registration" class="grayLink left">Register</a>
+				<a href="#" class="grayLink right">Forgot Password</a>
+			</div>
+		</form>
+	</div>
+</div>

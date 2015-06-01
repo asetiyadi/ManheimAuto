@@ -10,12 +10,11 @@
  	return app.config(['$stateProvider','$urlRouterProvider', function ($stateProvider,$urlRouterProvider) {
  		$urlRouterProvider.otherwise('/login');
  		$stateProvider
- 		// login state
  		.state('login', {
  			url: '/login',
 	        views: {
 	            'content': {
-	                templateUrl: './views/authenticate.html',
+	                templateUrl: './views/login.html',
 	                controller: 'authenticateCtrl'
 	            }
 	        },
@@ -23,12 +22,11 @@
 	        	pageTitle: 'Login' 
 	        }
 		})
- 		// login state
- 		.state('register', {
- 			url: '/register',
+ 		.state('registration', {
+ 			url: '/registration',
 	        views: {
 	            'content': {
-	                templateUrl: './views/register.html',
+	                templateUrl: './views/registration.html',
 	                controller: 'authenticateCtrl'
 	            }
 	        },
@@ -36,27 +34,25 @@
 	        	pageTitle: 'Registration' 
 	        }
 		})
-		// dashboard - parent state
 		.state('dashboard', {
 			url: '/dashboard',
 			abstract: true,
  			views: {
  				'content': {
-					templateUrl : './views/dashboard/main.html',
+					templateUrl : './views/main.html',
 					controller  : 'dashboardCtrl'
  				}
  			}
 		})
-		// dashboard - child state
 		.state('dashboard.content', {
 			url: '',
  			views: {
  				'progress': {
- 					templateUrl: './views/dashboard/vehicleProgress.html',
+ 					templateUrl: './views/report_progress.html',
 					controller  : 'dashboardCtrl'
  				},
  				'review': {
- 					templateUrl: './views/dashboard/vehicleReview.html',
+ 					templateUrl: './views/report_review.html',
 					controller  : 'dashboardCtrl'
  				},
  				'header': {
@@ -67,24 +63,22 @@
 	        	pageTitle: 'Dashboard' 
 	        }
 		})
-		// inspection - parent state
 	    .state('inspection', {
 	        abstract: true,
 	        url: '/inspection/{inspectionPath}',
 	        views: {
 	            'content': {
-	                templateUrl: './views/dashboard/main.html',
+	                templateUrl: './views/main.html',
 	                controller: 'inspectionCtrl'
 	            }
 	        }
 	    })
-	    // inspection - child state
 	    .state('inspection.vinScanner', {
 	        url: '',
 	        parent: 'inspection',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/vinScanner.html'
+	                templateUrl: './views/inspection/vin_scanner.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
@@ -94,8 +88,6 @@
 	        	pageTitle: 'VIN Scanner' 
 	        }
 	    })
-	    // inspection - child state
-	    // report - parent state
 	    .state('inspection.report', {
 	        url: '/report/{vinNum}',
 	        parent: 'inspection',
@@ -109,13 +101,12 @@
  				}
 	        }
 	    })
-	    // report - child state
 	    .state('inspection.report.dealerVehicleInfo', {
 	        url: '',
 	        parent: 'inspection.report',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/dealerVehicleInfo.html'
+	                templateUrl: './views/inspection/dealer_and_vehicle_information.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
@@ -125,13 +116,12 @@
 	        	pageTitle: 'Dealer and Vehicle Info' 
 	        }
 	    })
-	    // report - child state
 	    .state('inspection.report.preCheck', {
 	        url: '/preCheck',
 	        parent: 'inspection.report',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/preCheck.html'
+	                templateUrl: './views/inspection/pre_check.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
@@ -141,298 +131,280 @@
 	        	pageTitle: 'Pre-Check' 
 	        }
 	    })
-	    // report - child state
-	    // vehicle interior - parent state
 	    .state('inspection.report.vehicleInterior', {
 	        url: '/vehicleInterior',
 	        parent: 'inspection.report',
 	        abstract: true,
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/vehicleInterior.html'
+	                templateUrl: './views/inspection/vehicle_interior.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'progressBar': {
- 					templateUrl: './views/elements/progress-bar.html'
+ 					templateUrl: './views/elements/progress_bar.html'
  				}
 	        }
-	    })
-	    // vehicle interior - child state 	    
+	    })    
 	    .state('inspection.report.vehicleInterior.frontInterior', {
 	        url: '/frontInterior',
 	        parent: 'inspection.report.vehicleInterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/interior/frontInterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleInterior.frontInterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Interior of Vehicle: Front Interior' 
 	        }
-	    })
-	    // vehicle interior - child state 	    
+	    })    
 	    .state('inspection.report.vehicleInterior.leftFrontInterior', {
 	        url: '/leftFrontInterior',
 	        parent: 'inspection.report.vehicleInterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/interior/leftFrontInterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleInterior.leftFrontInterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Interior of Vehicle: Left Front Interior' 
 	        }
-	    })
-	    // vehicle interior - child state   
+	    })  
 	    .state('inspection.report.vehicleInterior.leftRearInterior', {
 	        url: '/leftRearInterior',
 	        parent: 'inspection.report.vehicleInterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/interior/leftRearInterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleInterior.leftRearInterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Interior of Vehicle: Left Rear Interior' 
 	        }
-	    })
-	    // vehicle interior - child state 	    
+	    })    
 	    .state('inspection.report.vehicleInterior.rightRearInterior', {
 	        url: '/rightRearInterior',
 	        parent: 'inspection.report.vehicleInterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/interior/rightRearInterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleInterior.rightRearInterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Interior of Vehicle: Right Rear Interior' 
 	        }
-	    })
-	    // vehicle interior - child state     
+	    })   
 	    .state('inspection.report.vehicleInterior.rightFrontInterior', {
 	        url: '/rightFrontInterior',
 	        parent: 'inspection.report.vehicleInterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/interior/rightFrontInterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleInterior.rightFrontInterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Interior of Vehicle: Right Front Interior' 
 	        }
 	    })
-	    // report - child state 
-	    // vehicle exterior - parent state 
 	    .state('inspection.report.vehicleExterior', {
 	        url: '/vehicleExterior',
 	        abstract: true,
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/vehicleExterior.html'
+	                templateUrl: './views/inspection/vehicle_exterior.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'progressBar': {
- 					templateUrl: './views/elements/progress-bar.html'
+ 					templateUrl: './views/elements/progress_bar.html'
  				}
 	        }
 	    })	    
-	    // vehicle exterior - child state 
 	    .state('inspection.report.vehicleExterior.frontExterior', {
 	        url: '/frontExterior',
 	        parent: 'inspection.report.vehicleExterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/exterior/frontExterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleExterior.frontExterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Exterior of Vehicle: Front Exterior' 
 	        }
-	    })	    
-	    // vehicle exterior - child state 	    
+	    })	    	    
 	    .state('inspection.report.vehicleExterior.leftFrontExterior', {
 	        url: '/leftFrontExterior',
 	        parent: 'inspection.report.vehicleExterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/exterior/leftFrontExterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleExterior.leftFrontExterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Exterior of Vehicle: Left Front Exterior' 
 	        }
-	    })	    
-	    // vehicle exterior - child state 	    
+	    })	    	    
 	    .state('inspection.report.vehicleExterior.leftRearExterior', {
 	        url: '/leftRearExterior',
 	        parent: 'inspection.report.vehicleExterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/exterior/leftRearExterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleExterior.leftRearExterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Exterior of Vehicle: Left Rear Exterior' 
 	        }
 	    })	    
-	    // vehicle exterior - child state   
 	    .state('inspection.report.vehicleExterior.rightRearExterior', {
 	        url: '/rightRearExterior',
 	        parent: 'inspection.report.vehicleExterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/exterior/rightRearExterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleExterior.rightRearExterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Exterior of Vehicle: Right Rear Exterior' 
 	        }
-	    })	    
-	    // vehicle exterior - child state     
+	    })	        
 	    .state('inspection.report.vehicleExterior.rightFrontExterior', {
 	        url: '/rightFrontExterior',
 	        parent: 'inspection.report.vehicleExterior',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/exterior/rightFrontExterior.html'
+	                templateUrl: './views/inspection/interior_exterior_content.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'reportData@inspection.report.vehicleExterior.rightFrontExterior': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Exterior of Vehicle: Right Front Exterior' 
 	        }
 	    })
-	    // engine - child state
 	    .state('inspection.report.vehicleEngine', {
 	        url: '/vehicleEngine',
 	        parent: 'inspection.report',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/vehicleEngine.html'
+	                templateUrl: './views/inspection/vehicle_engine.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'progressBar': {
- 					templateUrl: './views/elements/progress-bar.html'
+ 					templateUrl: './views/elements/progress_bar.html'
  				},
  				'reportData@inspection.report.vehicleEngine': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Engine Compartment' 
 	        }
 	    })
-	    // road test - child state
 	    .state('inspection.report.roadTest', {
 	        url: '/roadTest',
 	        parent: 'inspection.report',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/roadTest.html'
+	                templateUrl: './views/inspection/road_test.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'progressBar': {
- 					templateUrl: './views/elements/progress-bar.html'
+ 					templateUrl: './views/elements/progress_bar.html'
  				},
  				'reportData@inspection.report.roadTest': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Road Test' 
 	        }
 	    })
-	    // under the vehicle - child state
 	    .state('inspection.report.underVehicle', {
 	        url: '/underVehicle',
 	        parent: 'inspection.report',
 	        views: {
 	            'content': {
-	                templateUrl: './views/inspection/underTheVehicle.html'
+	                templateUrl: './views/inspection/under_the_vehicle.html'
 	            },
  				'header': {
  					templateUrl: './views/elements/header.html'
  				},
  				'progressBar': {
- 					templateUrl: './views/elements/progress-bar.html'
+ 					templateUrl: './views/elements/progress_bar.html'
  				},
  				'reportData@inspection.report.underVehicle': {
- 					templateUrl: './views/reportContent.html'
+ 					templateUrl: './views/report_content.html'
  				}
 	        },
 	        data : { 
 	        	pageTitle: 'Under the Vehicle' 
 	        }
 	    })
-	    // summary - child state
 	    .state('inspection.report.summary', {
 	        url: '/:vinNum/summary',
 	        parent: 'inspection.report',

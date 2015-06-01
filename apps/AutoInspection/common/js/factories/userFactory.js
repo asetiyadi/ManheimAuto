@@ -24,14 +24,6 @@
                     .then(function (response) {
                         return response.data;
                     });
-
-                /*$http(xhrRequest)
-                .success(function(data, status, headers, config) {
-                    successHandler(data)
-                })
-                .error(function(data, status, headers, config) {
-                    errorHandler(data);
-                })*/
             },
 
             verifyUser: function(criteria) {
@@ -40,7 +32,7 @@
                 var xhrRequest = {
                     headers: {'Content-Type': 'application/json'},
                     method: 'post',
-                    url: '/api/verifyUser',
+                    url: 'https://autoinspection.mybluemix.net/login',
                     data: criteria
                 };
 
@@ -48,14 +40,6 @@
                     .then(function (response) {
                         return response.data;
                     })
-
-                /*$http(xhrRequest)
-                .success(function(data, status, headers, config) {
-                    successHandler(data)
-                })
-                .error(function(data, status, headers, config) {
-                    errorHandler(data);
-                })*/
             }
         }
 

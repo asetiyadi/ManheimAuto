@@ -5,3 +5,4 @@ apps/*/i*/native/WorklightSDK
 apps/*/i*/native/www
 apps/*/windowsPhone*/native/www
 bin
+apps/*/RemoteBuildAndDeploy_DST.xml

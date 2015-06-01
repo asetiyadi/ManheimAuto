@@ -1,0 +1,30 @@
+<div class="viewWrapper" id="vinWrapper">
+    <!-- ================== -->
+    <!-- MANUAL VIN OVERLAY -->
+    <div id="manualVIN"> 
+        <h4>Enter VIN</h4>
+        <form data-ng-submit="submitForm(vinNum)" class="inputWrapper" name="manualVinForm" id="manualVinForm">
+            <input type="text" name="vin" data-ng-model="vinNum" class="form-control" tabindex="1" maxlength="17" placeholder="{{vinNum}}" />
+            <div data-ng-hide="loading" id="vinBtnWrapper">
+                <button type="button" data-ng-click="clearForm()" class="primaryBtn vinBtn left">Clear</button>
+                <button type="submit" class="primaryBtn vinBtn right">Submit</button>
+                <br>
+                <p class="statusTxt">{{statusTxt}}</p>
+            </div>
+            <div data-ng-show="loading" id="vinLoading">
+                <img src="images/loading.gif" alt="Loading" />
+            </div>
+        </form>
+    </div>
+    <div id="qrInstructions">
+        <p>Align the guide line to the center of the barcode</p>
+    </div>
+    <div id="vinAlignmentBar"></div>
+    <script>
+        $(".inputs").keyup(function () {
+            if (this.value.length == this.maxLength) {
+              $(this).next('.inputs').focus();
+            }
+        });
+    </script>
+</div>

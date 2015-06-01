@@ -7,42 +7,34 @@
  *****************************************************************************************/
  define(['./module'], function (controllers) {
  	'use strict';
- 	controllers.controller('authenticateCtrl', ['$scope','$state','userFactory','$log',
- 		function ($scope,$state,userFactory,$log) {
- 		// TODO: user authentication
- 		// user name, user password, email, and tech id required
- 		// user information
-	    $scope.userInfo = {
-	        username: 'jsmith',
-	        password: 'letmein',
-	        firstname: '',
-	        lastname: '',
-	        email: '',
-	        techId: ''
-	    };
+ 	controllers.controller('authenticateCtrl', ['$scope','$rootScope','$state','userFactory','$log','$timeout',
+   		function ($scope,$rootScope,$state,userFactory,$log,$timeout) {
+ 		//moved hard-coded user into the 
+ 		//app.run function located in app.js file
+ 		//$scope.userInfo = {};
 	    $scope.missingData = false;
 	    $scope.incorrectAuth = false;
 	    
  		$scope.registerUser = function() {
- 			$log.info("authenticateCtrl - registerUser = " + JSON.stringify($scope.userInfo));
+ 			$log.info("authenticateCtrl - registerUser = " + JSON.stringify($rootScope.userInfo));
  			$scope.missingData = false;
-	        if( $scope.userInfo.username.trim() === "" ||
-	            $scope.userInfo.password.trim() === "" ||
-	            $scope.userInfo.firstname.trim() === "" ||
-	            $scope.userInfo.lastname.trim() === "" ||
-	            $scope.userInfo.email.trim() === "" ||
-	            $scope.userInfo.techId.trim() === "") 
+ 			if( $rootScope.userInfo.username.trim() === "" ||
+	            $rootScope.userInfo.password.trim() === "" ||
+	            $rootScope.userInfo.firstname.trim() === "" ||
+	            $rootScope.userInfo.lastname.trim() === "" ||
+	            $rootScope.userInfo.email.trim() === "" ||
+	            $rootScope.userInfo.techId.trim() === "") 
 	        {
 	            $scope.missingData = true;
 	            return;
 	        }
 	        var data = {
-	            'username': $scope.userInfo.username,
-	            'password': $scope.userInfo.password,
-	            'firstname': $scope.userInfo.firstname,
-	            'lastname': $scope.userInfo.lastname,
-	            'email': $scope.userInfo.email,
-	            'techId': $scope.userInfo.techId
+        		'username': $rootScope.userInfo.username,
+	            'password': $rootScope.userInfo.password,
+	            'firstname': $rootScope.userInfo.firstname,
+	            'lastname': $rootScope.userInfo.lastname,
+	            'email': $rootScope.userInfo.email,
+	            'techId': $rootScope.userInfo.techId
 	        };
 	  		var promise = userFactory.registerUser(data);
 	  		promise.then(function (data) {
@@ -52,7 +44,7 @@
  		};
  		
  		
- 		$scope.isCustomResponse = function(response) {
+ 		/*$scope.isCustomResponse = function(response) {
  			console.log("isCustomResponse - Challenge required ..." + JSON.stringify(response.responseJSON));
  			if(!response || !response.responseJSON || response.responseText === null) {
  				return false;
@@ -84,23 +76,75 @@
  				return false;
  				//$scope.realmChallengeHandler.submitSuccess();
  			}
- 		};
+ 		};*/
+ 		
+ 		/*var checkOnline = function() {
+ 			var def = $q.defer();
+ 			WL.Client.connect({
+ 				onSuccess: function() {
+ 					console.log("*** User is online ***");
+ 					def.resolve(true);
+ 				},
+ 				onFailure: function() {
+ 					console.log("*** User is offline ***");
+ 					def.resolve(false);
+ 				},
+ 				timeout: 1000
+ 			});
+ 			
+ 			return def.promise;
+ 		}*/
  		
  		$scope.verifyUser = function() {
- 			$log.info("authenticateCtrl - verifyUser = " + JSON.stringify($scope.userInfo));
-	        /*var data = {
-	            'username': $scope.userInfo.username,
-	            'password': $scope.userInfo.password,
-	        };*/
+ 			$log.info("authenticateCtrl - verifyUser = " + JSON.stringify($rootScope.userInfo));
+ 			
+	        var data = {
+        		'username': $rootScope.userInfo.username,
+	            'password': $rootScope.userInfo.password
+	        };
 	        
-	        var options = {
+	        var promise = userFactory.verifyUser(data);
+	        promise.then(function (data) {
+	  			$log.info("authenticateCtrl - promise.verifyUser = " + JSON.stringify(data));
+                if(data.token != undefined & data.user != undefined) {
+                    $rootScope.token = data.token;
+	  				$scope.loading = true;
+                    $timeout(function() {
+                        $state.go("dashboard.content");
+                        $scope.loading = false;
+                    }, 1000);
+	  			} else {
+	  				$scope.loading = false;
+	  				$scope.incorrectAuth = true;
+	  				return;
+	  			}
+            });
+	       
+ 			/*var options = {
 				adapter: "BluemixHTTP", 
 				procedure: "submitAuthentication",
 				parameters: [$scope.userInfo.username, $scope.userInfo.password]
 			};
 	        
 	        //It does not need to specify callback since the response is checked by WL framework
-	        $scope.realmChallengeHandler.submitAdapterAuthentication(options, {});
+	        $scope.realmChallengeHandler.submitAdapterAuthentication(options, {
+	        	onSuccess: function(data) {
+	        		var userObj = data.responseJSON.array[0];
+	        		
+	        		console.log("scope-verifyUser - success: " + JSON.stringify(userObj));
+	        		
+	        		var identity = {
+        				adapter: "BluemixHTTP", 
+        				procedure: "setIdentity",
+        				parameters: [userObj]
+        			};
+	        		
+	        		 $scope.realmChallengeHandler.submitAdapterAuthentication(identity);
+	        	},
+	        	onFailure: function(error) {
+	        		console.log("scope-verifyUser - error: " + JSON.stringify(error));
+	        	}
+	        });*/
 			
 			/*WL.Client.invokeProcedure(invocationOptions, {
 				onSuccess: onVerifyUserSuccess,
@@ -125,8 +169,8 @@
 			console.log("onVerifyUserFailure: " + JSON.stringify(data));
 		}
 		
-		$scope.realmChallengeHandler = WL.Client.createChallengeHandler("AdapterSecurityTest");
+		/*$scope.realmChallengeHandler = WL.Client.createChallengeHandler("AdapterSecurityTest");
  		$scope.realmChallengeHandler.isCustomResponse = $scope.isCustomResponse;
- 		$scope.realmChallengeHandler.handleChallenge = $scope.handleChallenge;
+ 		$scope.realmChallengeHandler.handleChallenge = $scope.handleChallenge;*/
  	}]);
  });

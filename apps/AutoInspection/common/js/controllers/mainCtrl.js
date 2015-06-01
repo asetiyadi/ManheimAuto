@@ -17,13 +17,14 @@
       	$scope.vinUrl = locationService.getVinUrl();
  		$scope.modalShown = false;
  		$scope.stateName = $state.current.name;
+ 		$scope.userFirstName = $rootScope.userInfo.firstname;
 		/*******************************************************
 		*  OVERLAY MODAL TOGGLE                        
 		*******************************************************/
 		$scope.toggleModal = function(text) {
 			var text = text;
 		    var modalInstance = $modal.open({
-		        templateUrl: '../../views/modal.html',
+		        templateUrl: 'views/elements/info-overlay.html',
 		        controller: 'overlayModalCtrl',
 		        size: 'lg',
 		        resolve: {

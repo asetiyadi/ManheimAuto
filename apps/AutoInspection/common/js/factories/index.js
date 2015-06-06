@@ -8,5 +8,5 @@
  	'./navigationFactory',
  	'./reportFactory',
  	'./userFactory',
- 	'./productListFactory'
+ 	'./productFactory'
  ], function () {});

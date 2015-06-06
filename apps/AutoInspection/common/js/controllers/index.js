@@ -6,7 +6,6 @@
  *****************************************************************************************/
  define([
     './authenticateCtrl',
-    './dashboardCtrl',
     './headerCtrl',
     './inspectionCtrl',
     './mainCtrl',

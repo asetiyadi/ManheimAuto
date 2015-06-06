@@ -40,7 +40,7 @@
  			views: {
  				'content': {
 					templateUrl : './views/main.html',
-					controller  : 'dashboardCtrl'
+					controller  : 'mainCtrl'
  				}
  			}
 		})
@@ -49,11 +49,11 @@
  			views: {
  				'progress': {
  					templateUrl: './views/report_progress.html',
-					controller  : 'dashboardCtrl'
+					controller  : 'mainCtrl'
  				},
  				'review': {
  					templateUrl: './views/report_review.html',
-					controller  : 'dashboardCtrl'
+					controller  : 'mainCtrl'
  				},
  				'header': {
  					templateUrl: './views/elements/header.html'

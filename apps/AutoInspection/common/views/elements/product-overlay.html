@@ -24,6 +24,24 @@
 		</div>
 		<h4>{{selected.description}}</h4>
 	</div>
+	<!-- ================= -->
+	<!-- ORDERS TOP HEADER -->
+	<div class="modalHeader" data-ng-show="productOrders">
+		<div class="back-button" data-ng-click="backToProductList()">
+			<i class="fa fa-angle-left"></i>
+			<p>Back</p>
+		</div>
+		<h4>Order List</h4>
+	</div>
+	<!-- ======================== -->
+	<!-- ORDER DETAILS TOP HEADER -->
+	<div class="modalHeader" data-ng-show="orderDetails">
+		<div class="back-button" data-ng-click="backToOrderList()">
+			<i class="fa fa-angle-left"></i>
+			<p>Back</p>
+		</div>
+		<h4>Order Details</h4>
+	</div>
 	<!-- ======= -->
 	<!-- CONTENT -->
 	<div class="overlayContent">
@@ -86,7 +104,7 @@
 						</tr>
 						<tr>
 							<td>Price</td>
-							<td>{{selected.price}}</td>
+							<td>{{selected.price | currency}}</td>
 						</tr>
 						<tr>
 							<td>Type</td>
@@ -102,30 +120,100 @@
 						</tr>
 					</tbody>
 				</table>
+				<div id="quantity-container">
+					<p class="strong">Quantity</p>
+					<input type="text" data-ng-value="quantity" class="quantity-input" disabled />
+					<div class="quantity-button" data-ng-click="increment()">
+						<i class="fa fa-arrow-up"></i>
+					</div>
+					<div class="quantity-button" data-ng-click="decrement()">
+						<i class="fa fa-arrow-down"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- ................ -->
+		<!-- orders list view -->
+		<div data-ng-show="productOrders" class="search-container">
+			<div class="search-box">
+				<label for="searchBox">
+					<i class="fa fa-search"></i>
+				</label>
+				<input type="search" id="searchBox" placeholder="Search" data-ng-model="search.name">
+			</div>
+			<div>
+				<ul id="product-list">
+					<li data-ng-repeat="order in ordersList | filter:search:strict">
+						<span class="strong">{{order.id}}</span><br>
+						<p>{{order.name}}</p>
+						<p>{{order.transit}}</p>
+						<span class="status" data-ng-class="order.statusClass">{{order.status}}</span>
+						<span class="last-updated">{{order.lastUpdated}}</span>
+						<div class="order-details" data-ng-click="getOrderDetails(order.items)">
+							<i class="fa fa-angle-right"></i>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- ................... -->
+		<!-- orders details view -->
+		<div data-ng-show="orderDetails" id="order-details-list">
+			<div>
+				<ul id="product-details-list">
+					<li data-ng-repeat="item in itemDetails">
+						<p><span class="strong">Product Name:</span> {{item.description}}</p>
+						<p><span class="strong">Product ID:</span> {{item.id}}</p>
+						<p><span class="strong">Product Price:</span> {{item.price | currency}}</p>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</div>
 	<!-- ============== -->
 	<!-- DYNAMIC FOOTER -->
 	<div class="modalFooter">
-		<ul class="product-footer">
-			<li data-ng-show="listMenu || summaryMenu">
+		<ul class="product-footer" data-ng-hide="orderDetails">
+			<!-- ................... -->
+			<!-- pick icon: inactive -->
+			<li data-ng-show="quantity == 0">
 				<figure>
 					<img src="images/product-pick-disabled.png" alt="Select Product" />
 				</figure>
 				<figcaption>Pick</figcaption>
 			</li>
-			<li data-ng-show="selectedProduct">
+			<!-- ................. -->
+			<!-- pick icon: active -->
+			<li data-ng-show="quantity != 0" data-ng-click="addItem(selected.description,selected.price,quantity,selected.id)">
 				<figure>
 					<img src="images/product-pick-enabled.png" alt="Select Product" />
 				</figure>
 				<figcaption>Pick</figcaption>
 			</li>
-			<li>
+			<!-- ..................... -->
+			<!-- orders icon: inactive -->
+			<li data-ng-click="showOrders()" data-ng-hide="productOrders">
 				<figure>
-					<img src="images/product-orders-enabled.png" alt="List of Orders" />
+					<img src="images/product-orders-inactive.png" alt="List of Orders" />
 				</figure>
 				<figcaption>Orders</figcaption>
+			</li>
+			<!-- ................... -->
+			<!-- orders icon: active -->
+			<li data-ng-show="productOrders">
+				<figure>
+					<img src="images/product-orders-active.png" alt="List of Orders" />
+				</figure>
+				<figcaption class="orders-active">Orders</figcaption>
+			</li>
+		</ul>
+		<ul class="footer-details" data-ng-show="orderDetails">
+			<!-- ............. -->
+			<!-- order details -->
+			<li>
+				<div class="order-details-footer">
+					<span class="strong">Order Total:</span>&nbsp;{{getTotal() | currency}}
+				</div>
 			</li>
 		</ul>
 	</div>

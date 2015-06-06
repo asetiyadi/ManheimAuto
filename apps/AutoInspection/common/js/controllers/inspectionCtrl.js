@@ -8,8 +8,8 @@
  *****************************************************************************************/
  define(['./module'], function (controllers) {
     'use strict';
- 	controllers.controller('inspectionCtrl', ['$scope','$rootScope','$http','$timeout','locationService','$log','$state','$window','reportFactory','$modal','productListFactory',
-        function ($scope,$rootScope,$http,$timeout,locationService,$log,$state,$window,reportFactory,$modal,productListFactory) {
+ 	controllers.controller('inspectionCtrl', ['$scope','$rootScope','$http','$timeout','locationService','$log','$state','$window','reportFactory','$modal','productFactory',
+        function ($scope,$rootScope,$http,$timeout,locationService,$log,$state,$window,reportFactory,$modal,productFactory) {
         /*******************************************************
         *  VARIABLES                            
         *******************************************************/
@@ -19,10 +19,10 @@
         $scope.params = $state.params;
         $scope.inspectionParam = $scope.params.inspectionPath;
         $scope.urlParams = $rootScope.vinNum;
+        $scope.progressPercent = 0;
+        $scope.quantity = 0;
+        $scope.total = 0;
         $scope.date = new Date();
-        $scope.listMenu = true; //default view when product overlay is open
-        $scope.summaryMenu = false;
-        $scope.selectedProduct = false;
         $scope.newTxt = '';
         $scope.manualVinForm = {};
         $scope.apiData = {};
@@ -33,27 +33,31 @@
             attachment: '',
             note: ''
         };
-        // watch the notes field for text updates
+        // repair overlay variables
+        $scope.listMenu = true; // default
+        $scope.summaryMenu = false;
+        $scope.selectedProduct = false;
+        $scope.productOrders = false;
+        $scope.orderDetails = false;
+
+
+        // attachment overlay - watch the notes field for text updates so that the variable can be updated
         $rootScope.$watch('fields.note', function (newVal,oldVal) {
             if (newVal !== oldVal) {
-                $log.warn("New Val = ");   
                 $rootScope.fields.attachment = newVal;
             }
         });
-        //warn users about data loss on page reload
-        $window.onbeforeunload = function () {
-            return 'You will lose all unsaved changes.';
-        };
+        // counts the number of radio elements that have been clicked
         $scope.numItems = function () {
             $scope.checkedInput = angular.element('#form-views').length;
         };
+        // progress bar calculation
         $scope.calculateProgress = function () {
             $rootScope.objKeys = Object.keys($rootScope.formData);
             $rootScope.objLength = $rootScope.objKeys.length;
             $scope.calculatePercent = ($rootScope.objLength/$scope.totalCount) * 100;
             $scope.progressPercent = Math.ceil($scope.calculatePercent.toFixed(2));
         };
-
         /*******************************************************
         *  ATTACHMENT OVERLAY MODAL TOGGLE                        
         *******************************************************/
@@ -72,7 +76,37 @@
                 }
             });
         };
-
+        /*******************************************************
+        *  REPAIR CART SECTION                       
+        *******************************************************/
+        $scope.repairInvoice = [];
+        $scope.addItem = function(desc,price,qty,id) {
+            $scope.repairInvoice.push({
+                desc:desc,
+                price:price,
+                id:id,
+                qty:qty
+            });
+            $scope.quantity = 0; // reset quantity
+        };
+        $scope.removeItem = function(index) {
+            $scope.repairInvoice.splice(index, 1);
+        };
+        $scope.increment = function () {
+            $scope.quantity++;
+        };
+        $scope.decrement = function () {
+            if ($scope.quantity === 0) { return; }
+            $scope.quantity--;
+        };
+        $scope.getPartsTotal = function () {
+            var total = 0;
+            for (var i = 0; i < $scope.repairInvoice.length; i++) {
+                var product = $scope.repairInvoice[i];
+                total += (product.qty * product.price);
+            }
+            return total;
+        };
         /*******************************************************
         *  MANUAL VIN SECTION                       
         *******************************************************/
@@ -96,51 +130,27 @@
             *  EDMUNDS API VIN DECODE                             
             *******************************************************/
             $scope.apiKey = 'qb2vxv4qzn77hns26zdqzasv';
-            if ($scope.urlParams != undefined) {
-                var vinURL = 'https://api.edmunds.com/api/vehicle/v2/vins/'+$scope.urlParams+'?&fmt=json&api_key='+$scope.apiKey;
-                $http.get(vinURL).success(function (data,status,headers,config) {
-                    // delay for 2 secs
-                    $timeout(function() {
-                        $scope.loading = false;
-                        $scope.vehicleData = data;
-                        $scope.make = $scope.vehicleData.make.name;
-                        $scope.model = $scope.vehicleData.model.name
-                        $state.go('inspection.report.dealerVehicleInfo',({vinNum:$scope.urlParams}));
-                    }, 2000);
-                }).error(function (data,status,headers,config) {
-                    // delay for 2 secs
-                    $timeout(function() {
-                        $scope.loading = false;
-                        // bad request
-                        if (status === 400 || status === 404) {
-                            $scope.statusTxt = 'Invalid VIN entered, please try again.';
-                            $scope.clearForm();
-                        }
-                    }, 2000);
-                });
-            } else {
-                var vinURL = 'https://api.edmunds.com/api/vehicle/v2/vins/'+$scope.vinNum+'?&fmt=json&api_key='+$scope.apiKey;
-                $http.get(vinURL).success(function (data,status,headers,config) {
-                    // delay for 2 secs
-                    $timeout(function() {
-                        $scope.loading = false;
-                        $scope.vehicleData = data;
-                        $scope.make = $scope.vehicleData.make.name;
-                        $scope.model = $scope.vehicleData.model.name
-                        $state.go('inspection.report.dealerVehicleInfo',({vinNum:$scope.vinNum}));
-                    }, 2000);
-                }).error(function (data,status,headers,config) {
-                    // delay for 2 secs
-                    $timeout(function() {
-                        $scope.loading = false;
-                        // bad request
-                        if (status === 400 || status === 404) {
-                            $scope.statusTxt = 'Invalid VIN entered, please try again.';
-                            $scope.clearForm();
-                        }
-                    }, 2000);
-                });
-            }
+            var vinURL = 'https://api.edmunds.com/api/vehicle/v2/vins/'+$scope.urlParams+'?&fmt=json&api_key='+$scope.apiKey;
+            $http.get(vinURL).success(function (data,status,headers,config) {
+                // delay for 2 secs
+                $timeout(function() {
+                    $scope.loading = false;
+                    $scope.vehicleData = data;
+                    $scope.make = $scope.vehicleData.make.name;
+                    $scope.model = $scope.vehicleData.model.name
+                    $state.go('inspection.report.dealerVehicleInfo',({vinNum:$scope.urlParams}));
+                }, 2000);
+            }).error(function (data,status,headers,config) {
+                // delay for 2 secs
+                $timeout(function() {
+                    $scope.loading = false;
+                    // bad request
+                    if (status === 400 || status === 404) {
+                        $scope.statusTxt = 'Invalid VIN entered, please try again.';
+                        $scope.clearForm();
+                    }
+                }, 2000);
+            });
         };
         /*******************************************************
         *  UPLOAD VEHICLE IMAGE                          
@@ -150,7 +160,7 @@
             for (var i = 0; i < $files.length; i++) {
                 var file = $files[i];
                 $scope.upload = $upload.upload({
-                    url: 'server/upload/url', //upload.php script, node.js route, or servlet url
+                    url: 'server/upload/url', // upload.php script, node.js route, or servlet url
                     data: {myObj: $scope.myModelObj},
                     file: file,
                 }).progress(function(evt) {
@@ -161,6 +171,7 @@
                 });
             }
         };
+        // changes the text from add photo to the file path and file name of the image that is getting uploaded
         $scope.change = function (element,scope) {
             var fileName = element.value;
             $scope.newTxt = fileName;
@@ -176,13 +187,25 @@
         *  PRODUCT LIST SECTION                         
         *******************************************************/
         var listPromise;
+        var orderPromise;
         $scope.getProductList = function () {
-            listPromise = productListFactory.productList();
+            listPromise = productFactory.productList();
             listPromise.then(function (data) {
                 $scope.productList = data.products;
             });
         };
         $scope.getProductList();
+        /*******************************************************
+        *  ORDERS SECTION                         
+        *******************************************************/
+        // pulls in the data to display all orders that have been started - just using stub data currently
+        $scope.getProductOrders = function () {
+            orderPromise = productFactory.ordersList();
+            orderPromise.then(function (data) {
+                $scope.ordersList = data.orders;
+            });
+        };
+        $scope.getProductOrders(); 
         $scope.selectProduct = function (product) {
             $scope.productSelect = true;
             $scope.selected = product;
@@ -190,7 +213,79 @@
             $scope.listMenu = false; 
             $scope.summaryMenu = false;
         };
-        $scope.selected = {}; 
+        $scope.selected = {};
+        $scope.itemDetails = [];
+        // this function gets called within the factory call in getOrderDetails function 
+        // obj is the data from orderDetailsPromise call, and key is the selected order ID
+        // function loops through each item listed on the order and pulls in details for
+        // each item (price,name,etc.)
+        $scope.getOrderItemDetails = function (obj,key) {
+            for (var i = 0; i < key.length; i++) {
+                var itemID = key[i].itemID;
+                for (var j=0; j < obj.length; j++) {
+                    if (obj[j].id === itemID) {
+                        var result = obj[j];
+                        $scope.itemDetails.push(result);
+                    }
+                }
+            }
+        }; 
+        // takes selected order and makes a call to pull in item details for items listed on selected order 
+        $scope.getOrderDetails = function (items) {
+            var orderDetailsPromise;
+            $scope.orderDetails = true;
+            $scope.productOrders = false;
+            $scope.selectedItems = items;
+            orderDetailsPromise = productFactory.productList();
+            orderDetailsPromise.then(function (data) {
+                $scope.details = data.products;
+                $scope.getOrderItemDetails($scope.details,$scope.selectedItems);
+            });
+        };
+        // get the total for the selected order 
+        $scope.getTotal = function () {
+            var total = 0;
+            for (var i = 0; i < $scope.itemDetails.length; i++) {
+                $scope.price = $scope.itemDetails[i].price;
+                total += $scope.price;
+            }
+            return total;
+        };
+        // toggle product view - LIST 
+        $scope.toggleList = function() {
+            $scope.listMenu = true;
+            $scope.summaryMenu = false;
+        };
+        // toggle product view - SUMMARY 
+        $scope.toggleSummary = function() {
+            $scope.summaryMenu = true;
+            $scope.listMenu = false;
+        };
+        // orders page - sets variables so that the orders page displays
+        $scope.showOrders = function () {
+            $scope.productOrders = true;
+            $scope.listMenu = false; 
+            $scope.summaryMenu = false;
+            $scope.selectedProduct = false;
+        };
+        // back button - sets variables so that the product list displays 
+        $scope.backToProductList = function () {
+            $scope.listMenu = true; 
+            $scope.selectedProduct = false;
+            $scope.summaryMenu = false;
+            $scope.productOrders = false;
+        };
+        // back button - sets variables so that the order list displays 
+        $scope.backToOrderList = function () {
+            $scope.listMenu = false; 
+            $scope.selectedProduct = false;
+            $scope.summaryMenu = false;
+            $scope.orderDetails = false;
+            $scope.productOrders = true;
+        };
+        /*******************************************************
+        *  PRODUCT OVERLAY MODAL                       
+        *******************************************************/
         $scope.productModal = function() {
             var modalInstance = $modal.open({
                 templateUrl: 'views/elements/product-overlay.html',
@@ -198,24 +293,11 @@
                 size: 'lg'
             });
         };
-        $scope.backToProductList = function () {
-            $scope.listMenu = true; 
-            $scope.selectedProduct = false;
-            $scope.summaryMenu = false;
-        };
         $scope.submit = function () {
             $modalInstance.dismiss('cancel');
         };
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
-        };
-        $scope.toggleList = function() {
-            $scope.listMenu = true;
-            $scope.summaryMenu = false;
-        };
-        $scope.toggleSummary = function() {
-            $scope.summaryMenu = true;
-            $scope.listMenu = false;
         };
         /*******************************************************
         *  REPORT SECTION                         
@@ -239,12 +321,16 @@
                     $state.go("login");
                     return;
                 }
-
-                $scope.interior = data.interior;
+                // currently api is only set up for these report areas,
+                // once more data is available this needs to be updated 
+                $scope.interior = data.interior; 
                 $scope.exterior = data.exterior;
                 $scope.engine = data.engine;
-
                 $scope.frontInterior = $scope.interior.front;
+                // following if statements check if a section is available, if
+                // it is then it will push the length of the object to a variable 
+                // that will be used to calculate the total number of questions on 
+                // the report pages. This is used for the progress bar
                 if ($scope.frontInterior != undefined) {
                     $scope.count.push($scope.frontInterior.length);
                 }
@@ -300,6 +386,8 @@
         var current = $state.$current;
         var str = current.toString();
         var currentPath = str.substr(str.lastIndexOf('.')+1);
+        // this function switches that data that is used in 
+        // the form when the user switches the view 
         $scope.setDataForm = function (currentPath) {
             if (currentPath === 'preCheck') {
                 $scope.dataForm = $scope.checklist; 
@@ -331,10 +419,7 @@
                 $scope.dataForm = $scope.underVehicle;
             }
         };
-        /*******************************************************
-        *   APP RELOAD LOGIC                      
-        *******************************************************/
-        //only delay on first load or reload so data has time to populate
+        // need to delay so data from factory call is available
         $timeout(function () {
             $scope.setDataForm(currentPath);
         },500);
@@ -342,25 +427,9 @@
             var current = $state.$current;
             var str = current.toString();
             var currentPath = str.substr(str.lastIndexOf('.')+1);
-            //$scope.calculateProgress();
-            //no need to delay here, the data is already available
+            // no need to delay here, the data is already available
             $scope.setDataForm(currentPath);
         });
-        $scope.init = function () {
-            $scope.params = $state.params;
-            $scope.urlParams = $scope.params.vinNum;
-            // if vin is not empty
-            if (($scope.urlParams != null) || ($scope.urlParams != undefined)) {
-                // call the api 
-                $scope.submitForm();
-                // also redirect to initial report page, this if statement
-                // only runs if the page has been reloaded in the report section
-                // since this controller initially runs before the vin param
-                // is actually set
-                $state.go('inspection.report.dealerVehicleInfo');
-            }
-        };
-        $scope.init();
         $scope.getReport();
  	}]).controller('AttachmentModalCtrl', ['$scope','$rootScope','$modalInstance','$log','editName','editValue', 
         function ($scope,$rootScope,$modalInstance,$log,editName,editValue) {
@@ -370,7 +439,7 @@
         $scope.submit = function () {
             $rootScope.fields.attachment = $rootScope.fields.note;
             $modalInstance.dismiss('cancel');
-        }
+        };
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };

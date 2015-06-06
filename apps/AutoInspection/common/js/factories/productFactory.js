@@ -1,23 +1,31 @@
  /****************************************************************************************
  *
- *  PRODUCT LIST FACTORY
+ *  PRODUCT FACTORY
  *  @version (.1)
  *  @date (2015)
  *
  *****************************************************************************************/
  define(['./module'], function (factories) {
-    factories.factory('productListFactory', ['$http', 
+    factories.factory('productFactory', ['$http', 
         function ($http) {
-        var productListFactory = {
+        var productFactory = {
             productList : function() {
                 return $http({
-                    url: "data/product-list.json",
+                    url: "././data/product-list.json",
+                    method: "GET",
+                }).then(function (response) {
+                    return response.data;
+                });
+            },
+            ordersList : function() {
+                return $http({
+                    url: "././data/product-orders.json",
                     method: "GET",
                 }).then(function (response) {
                     return response.data;
                 });
             }
         };
-        return productListFactory;
+        return productFactory;
     }]);
  });

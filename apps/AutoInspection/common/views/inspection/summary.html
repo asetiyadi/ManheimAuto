@@ -21,22 +21,22 @@
 			<h3>Projected Repair</h3>
 			<div id="repairGraph" class="left"></div>
 			<div class="right">
+				<div class="tblHeader">
+					<p class="left">CRITICAL PARTS</p>
+					<p class="right">{{getPartsTotal() | currency}}</p>
+				</div>
 				<ul>
-					<li class="tblHeader">
-						<p class="left seventyFive">CRITICAL PARTS</p>
-						<p class="right twentyFive">&#36;900</p>
+					<li data-ng-repeat="product in repairInvoice track by $index">
+						<p class="left seventyFive">
+							{{product.desc}}<br>
+							<span class="strong">Product #:&nbsp;</span>{{product.id}}<br>
+							<span class="strong">Qty:&nbsp;</span>{{product.qty}}
+						</p>
+						<p class="right red twentyFive">{{(product.price) * (product.qty) | currency}}</p>
+						<div id="remove-item" data-ng-click="removeItem()"><i class="fa fa-times"></i></div>
 					</li>
-					<li>
-						<p class="left seventyFive">Transmission Clutch Repair</p>
-						<p class="right red twentyFive">&#36;600</p>
-					</li>
-					<li>
-						<p class="left seventyFive">Brake Pad Replacement</p>
-						<p class="right red twentyFive">&#36;150</p>
-					</li>
-					<li>
-						<p class="left seventyFive">Bumper Dent Removal</p>
-						<p class="right red twentyFive">&#36;150</p>
+					<li data-ng-show="!repairInvoice.length">
+						No products selected!
 					</li>
 				</ul>
 			</div>

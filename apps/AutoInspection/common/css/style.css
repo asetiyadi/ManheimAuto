@@ -25,7 +25,6 @@
     font-style: normal;
     -webkit-text-stroke: 1px rgba(0, 0, 0, 0.4);
 }
-
 /*********************************************
 *  BASE                                  @base
 **********************************************/
@@ -113,6 +112,9 @@ a:visited {
 }
 .strong {
     font-weight: bold;
+}
+.fa-search {
+    color: #918e88;
 }
 input.btnCtrl {
     font-size: 1.25em;
@@ -257,6 +259,10 @@ input.form-control {
   color: #00305e;
   font-weight: bold;
 }
+.orders-active {
+    color: #00305E;
+    font-weight: bold;
+}
 /*********************************************
 *  LOADING SCREEN               @loadingScreen
 **********************************************/
@@ -301,64 +307,15 @@ input.form-control {
     margin: 1em auto;
     font-size: 1.1em;
 }
-
 /*********************************************
 *  OVERLAY MODAL                 @overlayModal
 **********************************************/
-#infoOverlayModal,
-#attachmentOverlayModal,
-#productOverlayModal {
-    position: absolute;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 1px solid #bab7b2;
-    -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
-    background-color: #EFEEEC;
-}
-#productOverlayModal .overlayContent {
-    margin: 0 auto;
-    width: 100%;
-    height: 70%;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    background-color: #FFF;
-    border-bottom: 1px solid #B7B2AC;
-}
-#infoOverlayModal .overlayContent,
-#attachmentOverlayModal .overlayContent {
-    position: absolute;
-    top: 5em;
-    left: 0;
-    right: 0;
-    margin: 0 auto;
-    width: 95%;
-    height: 60%;
-}
 .overlayContent textarea {
     height: 100%;
     width: 100%;
     border: 1px solid #FFF;
     border-radius: 6px;
     padding: 0.25em 0.5em;
-}
-#productOverlayModal .modalHeader h4 {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 70%;
-    height: 100%;
-    text-align: center;
-    margin: 0.8em auto 0;
-    line-height: 1.5em;
-    font-size: 0.9em;
-    color: #00305e;
-    font-weight: bold;
-    text-transform: capitalize;
 }
 .modalHeader {
     background-color: #efeeec;
@@ -446,10 +403,6 @@ ul.top-navigation li div {
     height: 100%;
     padding: 0.6em;
 }
-#productOverlayModal .modalFooter {
-    width: 100%;
-    height: 5em;
-}
 ul.product-footer {
     width: 100%;
     height: 100%;
@@ -473,6 +426,7 @@ ul.list-view{
     margin: 0;
     padding: 0;
     border-bottom: 1px solid #B7B2AC;
+    background-color: #FFF;
 }
 ul.summary-view {
     list-style-type: none;
@@ -494,6 +448,9 @@ ul.summary-view li {
     border-bottom: 1px solid #B7B2AC;
     padding: 0.5em;
     position: relative;
+}
+ul.summary-view li {
+    background-color: #FFF;
 }
 ul.list-view li:last-child,
 ul.summary-view li:last-child {
@@ -535,17 +492,19 @@ ul.summary-view .product-details i {
     line-height: 1.9em;
     margin-right: 0.05em;
 }
+#product-list li .order-details i,
 ul.list-view .product-details i {
     color: #747474;
     font-weight: bold;
     font-size: 3.5em;
     cursor: pointer;
-    float: right;
     margin-right: 0.25em;
+    float: right;
 }
 .selected-view {
     width: 100%;
     height: 100%;
+    background-color: #FFF;
 }
 .selected-product-image img {
     height: auto;
@@ -555,6 +514,7 @@ ul.list-view .product-details i {
     width: 100%;
     text-align: left;
     padding: 0.75em;
+    position: relative;
 }
 .selected-view .description h4 {
     color: #868686;
@@ -628,7 +588,6 @@ ul.list-view .product-details i {
     color: #00305e;
     z-index: 1;
 }
-
 /*********************************************
 *  MEDIA QUERIES                 @mediaQueries
 **********************************************/
@@ -636,7 +595,7 @@ ul.list-view .product-details i {
 @media all and (min-width: 31.250em) {
     ul.list-view li {
         width: 100%;
-        height: 12em;
+        height: 13.5em;
     }
     ul.summary-view li {
         width: 100%;
@@ -661,21 +620,15 @@ ul.list-view .product-details i {
         width: 100%;
         cursor: pointer;
     }
+    #product-list li .order-details i {
+        line-height: 1.95em;
+    }
     ul.list-view .product-details i {
         line-height: 3.4em;
+        float: right;
     }
     ul.product-footer li {
         width: 10em;
-    }
-    #productOverlayModal {
-        min-height: 40em;
-    }
-    #productOverlayModal .overlayContent {
-        height: 77%;
-    }
-    #productOverlayModal .modalHeader h4 {
-        width: 100%;
-        font-size: 1.2em;
     }
     .selected-product-image img {
         height: auto;

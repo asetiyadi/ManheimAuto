@@ -8,18 +8,21 @@
 *  3.) NAVIGATION TEMPLATE __________________ @navigationTmpl
 *  4.) DASHBOARD TEMPLATE ___________________ @dashboardTmpl
 *  5.) REPORT TEMPLATE ______________________ @reportTempl
-*  6.) VIN SCANNER TEMPLATE _________________ @vinScannerTmpl
-*  7.) VEHICLE PROGRESS TEMPLATE ____________ @progressTmpl
-*  8.) VEHICLE REVIEW TEMPLATE ______________ @reviewTmpl
-*  9.) DEALER/VEHICLE TEMPLATE ______________ @dealerVehicleTmpl
-* 10.) INTERIOR TEMPLATE ____________________ @interiorTmpl
-* 11.) EXTERIOR TEMPLATE ____________________ @exteriorTmpl
-* 12.) ENGINE TEMPLATE ______________________ @engineTmpl
-* 13.) ROAD TEST TEMPLATE ___________________ @roadTestTmpl
-* 14.) UNDER VEHICLE TEMPLATE _______________ @underVehicleTmpl
-* 15.) SUMMARY TEMPLATE _____________________ @summaryTmpl
-* 16.) REPORT _______________________________ @report
-* 17.) MEDIA QUERIES ________________________ @mediaQueries
+*  6.) INFO MODAL ___________________________ @infoModal
+*  7.) ATTACHMENT MODAL _____________________ @attachmentModal
+*  8.) PRODUCT MODAL ________________________ @productModal
+*  9.) VIN SCANNER TEMPLATE _________________ @vinScannerTmpl
+* 10.) VEHICLE PROGRESS TEMPLATE ____________ @progressTmpl
+* 11.) VEHICLE REVIEW TEMPLATE ______________ @reviewTmpl
+* 12.) DEALER/VEHICLE TEMPLATE ______________ @dealerVehicleTmpl
+* 13.) INTERIOR TEMPLATE ____________________ @interiorTmpl
+* 14.) EXTERIOR TEMPLATE ____________________ @exteriorTmpl
+* 15.) ENGINE TEMPLATE ______________________ @engineTmpl
+* 16.) ROAD TEST TEMPLATE ___________________ @roadTestTmpl
+* 17.) UNDER VEHICLE TEMPLATE _______________ @underVehicleTmpl
+* 18.) SUMMARY TEMPLATE _____________________ @summaryTmpl
+* 19.) REPORT _______________________________ @report
+* 20.) MEDIA QUERIES ________________________ @mediaQueries
 *
 *****************************************************************************************/
 .vehicleImg img {
@@ -645,6 +648,238 @@
 	display: block;
 }
 /*********************************************
+*  INFO MODAL                       @infoModal
+**********************************************/
+#infoOverlayModal {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bab7b2;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #EFEEEC;
+}
+#infoOverlayModal .overlayContent {
+    position: absolute;
+    top: 5em;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 95%;
+    height: 60%;
+}
+/*********************************************
+*  ATTACHMENT MODAL           @attachmentModal
+**********************************************/
+#attachmentOverlayModal {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bab7b2;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #EFEEEC;
+}
+#attachmentOverlayModal .overlayContent {
+    position: absolute;
+    top: 5em;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 95%;
+    height: 60%;
+}
+/*********************************************
+*  PRODUCT MODAL                 @productModal
+**********************************************/
+#quantity-container {
+	position: absolute;
+	top: 6.5em;
+	right: 2em;
+	padding: 0.5em;
+	border: 1px solid #BAB5AE;
+	border-radius: 10px;
+	background-color: #F7F6F4;
+}
+.quantity-input {
+	height: 44px;
+	width: 44px;
+	border: 1px solid #bab5ae;
+	border-radius: 10px;
+	text-align: center;
+}
+.quantity-button {
+	display: inline-block;
+	cursor: pointer;
+	width: 44px;
+	height: 44px;
+	text-align: center;
+	border: 1px solid #bab5ae;
+	border-radius: 10px;
+	background-color: #FFF;
+}
+.quantity-button i {
+	font-size: 1.5em;
+	line-height: 1.95em;
+	color: #000;
+}
+#productOverlayModal {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bab7b2;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #EFEEEC;
+    min-height: 45em;
+}
+#productOverlayModal .modalHeader h4 {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	line-height: 2.5em;
+	font-size: 1.5em;
+	color: #000;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+#productOverlayModal .overlayContent {
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 77%;
+}
+#productOverlayModal .modalFooter {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+    width: 100%;
+    height: 5em;
+}
+#productOverlayModal .search-box {
+	position: relative;
+	padding: 0.5em;
+	background-color: #918e88;
+	height: 4.3em;
+}
+#productOverlayModal .footer-details {
+	list-style-type: none;
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	border-radius: 0 0 4px 4px;
+	background-color: #B7B2AC;
+	font-size: 1.25em;
+	color: #000;
+}
+#productOverlayModal .footer-details li {
+	height: 100%;
+	width: 100%;
+	display: table;
+}
+#productOverlayModal .footer-details li div {
+	display: table-cell;
+	vertical-align: middle;
+}
+#productOverlayModal label {
+	position: absolute;
+	top: 20%;
+	left: 8%;
+	font-size: 1.25em;
+}
+#product-list {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	background-color: #FFF;
+}
+#product-details-list {
+	background-color: #EFEEEC;
+	padding: 1em;
+	list-style-type: decimal-leading-zero;
+	margin: 0;
+}
+#order-details-list div {
+	position: relative;
+}
+#product-list li {
+	padding: 0.5em;
+	height: auto;
+	border-bottom: 1px solid #e9e6e1;
+	text-align: left;
+	position: relative;
+}
+#product-details-list li {
+	width: 90%;
+	margin: 0 auto 0.5em;
+	background-color: #FFF;
+	border-radius: 4px;
+	border-bottom: 1px solid #B7B2AC;
+	padding: 0.5em;
+	height: auto;
+	text-align: left;
+	position: relative;
+}
+#product-list li .order-details,
+#product-details-list li.order-details {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	cursor: pointer;
+}
+#order-details-list .order-details-footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+#product-list li span.status {
+	position: absolute;
+	top: 2em;
+	right: 3em;
+}
+#product-list li span.last-updated {
+	position: absolute;
+	top: 3.5em;
+	right: 3em;
+}
+#product-list li span.open-order,
+#product-list li span.shipping,
+#product-list li span.completed {
+	font-weight: bold;
+}
+#product-list li span.open-order {
+	color: #00a72c;
+}
+#product-list li span.shipping {
+	color: #e47d00;
+}
+#product-list li span.completed {
+	color: #00249e;
+}
+#searchBox {
+	width: 90%;
+	border: 1px solid #bab5ae;
+	padding: 0.5em 0.5em 0.5em 10%;
+	font-size: 1.25em;
+}
+/*********************************************
 *  VIN SCANNER TEMPLATE        @vinScannerTmpl
 **********************************************/
 canvas,
@@ -1257,6 +1492,9 @@ p.suggested {
 	text-align: left;
 	font-size: 0.9em;
 }
+#summaryWrapper p.twentFive {
+	text-align: center;
+}
 #summaryWrapper h3 {
 	padding: 0.75em;
 	margin: 0;
@@ -1321,13 +1559,30 @@ p.suggested {
 	background: url('../images/summary/projected-repair.png') no-repeat top center;
 	background-size: contain;
 }
+#repair div.right {
+	width: 60%;
+}
+#repair div.left {
+	width: 40%;
+}
 #repair div.left,
 #repair div.right {
-	width: 50%;
 	height: 14em;
 	border-bottom: 6px solid #EDECEA;
+	padding: 0 1em 0 1em;
+	position: relative;
 }
-#repair ul,
+#repair ul {
+	height: 10.6em;
+	overflow-y: auto;
+	width: 21.5em;
+	position: absolute;
+	top: 3em;
+	left: 1em;
+	list-style-type: none;
+	padding: 0;
+	margin: 0 auto;
+}
 #pricing ul {
 	list-style-type: none;
 	padding: 0;
@@ -1335,16 +1590,19 @@ p.suggested {
 	width: 90%;
 	height: 100%;
 }
-#repair ul li.tblHeader {
+#repair div.tblHeader {
 	background-color: #EDECEA;
 	color: #818181;
 	width: 100%;
 	height: 3em;
 	border-bottom: 1px solid #BEBEBE;
+	line-height: 3em;
+	padding: 0 1em 0 1em;
 }
 #repair ul li {
 	width: 100%;
-	height: 3em;
+	height: 6em;
+	position: relative;
 }
 #repair ul li.left,
 #repair ul li.right {
@@ -1357,10 +1615,25 @@ p.suggested {
 }
 #repair ul li p {
 	display: inline-block;
-	margin: 0;
-	padding: 0.5em;
-	height: 100%;
-	line-height: 2.6em;
+	margin: 0.5em auto;
+	height: 6em;
+	border-bottom: 1px solid #EDECEA;
+	vertical-align: middle;
+}
+#repair ul li p.twentyFive {
+	padding-top: 4.5em;
+	font-weight: bold;
+}
+#remove-item {
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 44px;
+	width: 44px;
+}
+#remove-item i {
+	font-size: 2.5em;
+	color: #00305E;
 }
 #pricing div.left,
 #pricing div.right {
@@ -1400,9 +1673,15 @@ p.suggested {
 	.contentWrapper h2 {
 		font-size: 1.15em;
 	}
+    /******************************
+    * DASHBOARD
+    *******************************/
 	#dashboardWrapper {
 		width: 40%;
 	}
+    /******************************
+    * REVIEW/PROGRESS TEMPLATE
+    *******************************/
 	#progressContainer,
 	#reviewContainer {
 		height: 90%;
@@ -1431,7 +1710,6 @@ p.suggested {
 		font-size: 1.25em;
 		line-height: 2.5em;
     }
-
 }
 /* 625px */
 @media all and (min-width: 39.063em) {
